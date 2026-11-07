@@ -197,7 +197,7 @@ export function createFig12(container: HTMLElement, a?: LeagueRow[] | Fig12Optio
       const sp = storyPoints(pts)
         .filter(({ kind }) => !(opt.band && kind === 'peak')) // the band carries the 3P% range
         .filter(({ kind }) => !compact || kind === 'paper' || kind === 'latest');
-      const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), ph);
+      const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), ph, 80, pts);
       for (const { kind, p } of sp) {
         const target = !then && p.year > PAPER_LAST ? body : panel;
         if (!compact && (kind === 'peak' || (kind === 'latest' && !then))) {

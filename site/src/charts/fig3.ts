@@ -156,9 +156,16 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
     const pts = selectedPts();
     const f = fit();
 
-    const H = Math.round(W * aspect(W));
-    const m = marginFor(W);
     const then = state.mode === 'then';
+    const compact = W < 560;
+    // stats chip geometry is needed early: under 560px it sits below the plot and extends the SVG
+    const pairs: [string, string][] = [['n', String(f.n)], ['r', f.n >= 3 ? fmt2(f.r) : '—'], ['p', fmtP(f.p)]];
+    const line2Chars = pairs.map(([k, v]) => `${k} ${v}`).join('  ').length;
+    const bw = compact ? Math.max(180, 28 + Math.ceil(line2Chars * 7.2)) : Math.max(160, 28 + Math.ceil(line2Chars * 7.2));
+    const boxH = compact ? (f.n < 3 ? 96 : 78) : f.n < 3 ? 104 : 84;
+    const below = compact ? boxH + 24 : 0;
+    const H = Math.round(W * aspect(W)) + below;
+    const m = { ...marginFor(W), bottom: marginFor(W).bottom + 12 + below };
     const mLeft = then ? m.left + 26 : m.left;
     const w = W - mLeft - m.right;
     const h = H - m.top - m.bottom;
@@ -184,7 +191,7 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
     ax.selectAll('.tick line').remove();
     ax.selectAll('.tick text').attr('class', 'axis-text').attr('fill', null);
     ax.append('line').attr('class', 'baseline').attr('x1', 0).attr('x2', w).attr('y1', 0).attr('y2', 0);
-    g.append('text').attr('class', 'axis-title').attr('x', w).attr('y', h + 40).attr('text-anchor', 'end')
+    g.append('text').attr('class', 'axis-title').attr('x', w / 2).attr('y', h + 40).attr('text-anchor', 'middle')
       .text(state.x === 'age' ? "Curry's age" : "Curry's made 3s per game");
     yAxisTitle(g, then ? `24+ ft "usage %" · paper's scale ≈ pct × ${SUM_FACTOR}` : '24+ ft usage %', h, then ? (W < 560 ? -56 : -68) : (W < 560 ? -34 : -42));
 
@@ -197,13 +204,8 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
         .attr('x2', x(x1)).attr('y2', y(clampY(f.slope * x1 + f.intercept)));
     }
 
-    // stats box geometry first, so point labels can dodge it. Compact on narrow containers.
-    const compact = W < 560;
-    const pairs: [string, string][] = [['n', String(f.n)], ['r', f.n >= 3 ? fmt2(f.r) : '—'], ['p', fmtP(f.p)]];
-    const line2Chars = pairs.map(([k, v]) => `${k} ${v}`).join('  ').length;
-    const bw = compact ? 124 : Math.max(160, 28 + Math.ceil(line2Chars * 7.2));
-    const boxH = compact ? (f.n < 3 ? 112 : 96) : f.n < 3 ? 104 : 84;
-    // Candidate corners in preference order; pick the first that covers no plotted point, else the fewest.
+    // Stats chip placement. Wide: a corner that covers no plotted point (else the fewest).
+    // Compact (< 560px): below the plot, under the x-axis title, so it never covers data or labels.
     const pxy = pts.map((p) => [x(xOf(p)), y(yOf(p))] as const);
     type R = { x0: number; x1: number; y0: number; y1: number };
     const covered = (r: R) => pxy.filter(([px, py]) => px > r.x0 - 14 && px < r.x1 + 14 && py > r.y0 - 14 && py < r.y1 + 14).length;
@@ -213,7 +215,9 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
       { x0: 10, x1: 10 + bw, y0: h - boxH - 12, y1: h - 12 },
       { x0: w - bw - 10, x1: w - 10, y0: 12, y1: 12 + boxH },
     ];
-    const boxRect = candidates.reduce((best, r) => (covered(r) < covered(best) ? r : best), candidates[0]);
+    const boxRect: R = compact
+      ? { x0: 0, x1: bw, y0: h + 56, y1: h + 56 + boxH }
+      : candidates.reduce((best, r) => (covered(r) < covered(best) ? r : best), candidates[0]);
 
     // points: plain dots first, then the labeled story points (first, 2016, latest) so labels stay on top
     const labeled = new Map(storyPoints(pts.map((p) => ({ ...p, v: p.league }))).map((s) => [s.p.year, s.kind]));
@@ -227,7 +231,7 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
         // season labels are ~7 chars; run them rightwards when there is room, and drop below if they would hit the box
         const anchor: 'start' | 'end' = px + 8 + labelW < w ? 'start' : 'end';
         const lx0 = anchor === 'start' ? px + 8 : px - 8 - labelW;
-        const hitsBox = (ly0: number, ly1: number) => lx0 < boxRect.x1 && lx0 + labelW > boxRect.x0 && ly0 < boxRect.y1 && ly1 > boxRect.y0;
+        const hitsBox = (ly0: number, ly1: number) => !compact && lx0 < boxRect.x1 && lx0 + labelW > boxRect.x0 && ly0 < boxRect.y1 && ly1 > boxRect.y0;
         let place: 'above' | 'below' = kind === 'first' ? 'below' : 'above';
         if (place === 'above' && hitsBox(py - 24, py - 8)) place = 'below';
         drawStoryPoint(g, px, py, w, { text: p.season, place, anchor });
@@ -244,16 +248,14 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
     // Two points fit any line exactly; R² and r are only shown once a trend can mean something.
     box.append('text').attr('class', 'stat-key').attr('x', 14).attr('y', 20).text('R²');
     box.append('text').attr('class', 'stat-big').attr('x', 14).attr('y', compact ? 46 : 50).attr('font-size', compact ? 26 : null).text(f.n >= 3 ? fmt2(f.r2) : '—');
+    // compact: the chip is an inline block below the plot; wide: the corner chip
     if (compact) {
-      // two short lines: "n 17 · r 0.68" and "p 0.0028"
+      // below the plot there is room for one line: "n 17  r 0.68  p 0.0028"
       const l1 = box.append('text').attr('x', 14).attr('y', 66);
-      l1.append('tspan').attr('class', 'stat-key').text('n ');
-      l1.append('tspan').text(pairs[0][1]);
-      l1.append('tspan').attr('class', 'stat-key').text('  r ');
-      l1.append('tspan').text(pairs[1][1]);
-      const l2 = box.append('text').attr('x', 14).attr('y', 84);
-      l2.append('tspan').attr('class', 'stat-key').text('p ');
-      l2.append('tspan').text(pairs[2][1]);
+      pairs.forEach(([k, v], i) => {
+        l1.append('tspan').attr('class', 'stat-key').text(`${i ? '  ' : ''}${k} `);
+        l1.append('tspan').text(v);
+      });
     } else {
       const line2 = box.append('text').attr('x', 14).attr('y', 70);
       pairs.forEach(([k, v], i) => {
@@ -261,7 +263,7 @@ export function createFig3(container: HTMLElement, a?: Fig3Data | Fig3Options, b
         line2.append('tspan').text(v);
       });
     }
-    if (f.n < 3) box.append('text').attr('class', 'stat-key').attr('x', 14).attr('y', compact ? 102 : 90).text(f.n === 0 ? 'n = 0 · add seasons' : `n = ${f.n} · add seasons`);
+    if (f.n < 3) box.append('text').attr('class', 'stat-key').attr('x', 14).attr('y', compact ? 84 : 90).text(f.n === 0 ? 'n = 0 · add seasons' : `n = ${f.n} · add seasons`);
   }
 
   frame.observe(render);

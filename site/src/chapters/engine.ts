@@ -71,6 +71,7 @@ export function createEngine(root: HTMLElement, defs: ChapterDef[], panels: HTML
     nextBtn.disabled = last;
     nextLabel.textContent = bi < defs[ci].beats - 1 ? 'Next' : ci < total - 1 ? defs[ci + 1].label : 'End';
     document.documentElement.classList.toggle('is-dark-chapter', !!defs[ci].dark);
+    document.documentElement.classList.toggle('is-scroll-chapter', !!defs[ci].scrolls);
     const hash = bi > 0 ? `#c${ci}-${bi}` : `#c${ci}`;
     if (location.hash !== hash) history.replaceState(null, '', hash);
   };

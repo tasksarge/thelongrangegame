@@ -22,77 +22,116 @@
 .cutout { display: inline-block; vertical-align: middle; filter: none; }
 .cutout--hand { width: 64px; height: 64px; margin-right: 0.4rem; transform: rotate(-8deg); }
 .cutout--watch { position: absolute; right: 0; top: 0; width: clamp(80px, 9vw, 140px); height: auto; opacity: 0.9; transform: rotate(10deg); }
-.g7__stage { position: relative; }
 .scene--dark .cutout { filter: invert(1) brightness(1.1); }
-@media (max-width: 899px) { .cutout--watch { display: none; } }
 
-/* generic chapter layout */
-.ch { position: absolute; inset: 0; display: grid; grid-template-rows: 1fr auto; padding: clamp(1rem, 3vh, 2.25rem) var(--gutter) calc(5.5rem + env(safe-area-inset-bottom, 0px)); }
-.ch__grid { display: grid; gap: clamp(1rem, 3vw, 3rem); align-items: center; min-height: 0; }
-@media (min-width: 900px) { .ch__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.ch__plate { position: absolute; inset: 0; z-index: 0; }
-.ch__plate img, .ch__plate .loop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* =====================================================================
+   THE STAGE. Two layouts only:
+   TWO   = (min-width: 900px) and (min-aspect-ratio: 4/5): text | visual, 5/12 | 7/12
+   STACK = everything else: one column, controls are a bottom bar
+   Every chapter sits on --page-x. Columns share one top edge; the pair is
+   centred between the chapter bar and the controls row.
+   ===================================================================== */
+.ch { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; grid-template-columns: minmax(0, 1fr); padding: var(--stage-pt) var(--page-x) var(--stage-pb); }
+.ch > :where(:not(.ch__plate, .g7__arrows, dialog)) { position: relative; z-index: 1; }
+.ch__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-5); min-height: 0; align-content: start; }
+.ch__grid > * { min-width: 0; }
+.ch__scroll { overflow: auto; overscroll-behavior: contain; }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .ch__grid { grid-template-columns: var(--split); column-gap: var(--col-gap); align-self: safe center; align-items: start; max-height: var(--stage-h); }
+  .ch__grid > * { max-height: var(--stage-h); }
+}
+
+/* side scrims: the box bleeds to the viewport edge, its text stays on the page edge */
+.scrim { position: relative; }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .scrim { margin-inline-start: calc(-1 * var(--page-x)); padding: var(--s-5) var(--s-5) var(--s-5) var(--page-x); background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+}
+/* one chart panel */
+.panel { position: relative; padding: clamp(1rem, 2.5vw, 1.75rem); background: var(--surface); }
+
+/* ---------- plates: ONE offset, ONE object-position, ONE opacity per chapter. Opacity sits on the group so the
+   loop and the still never stack (each at .18 would read as .33) ---------- */
+.ch__plate { position: absolute; inset: 0; z-index: 0; opacity: var(--plate-a, 1); }
+.ch__plate :is(img, .loop) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--plate-pos, 50% 50%); transform: var(--plate-flip, none); }
 .loop { opacity: 0; transition: opacity 600ms var(--ease-out); pointer-events: none; }
 .loop.is-playing { opacity: 1; }
-.g7 .ch__plate .loop { object-position: 60% 50%; opacity: 0; }
-.g7 .ch__plate .loop.is-playing { opacity: 0.42; }
+.ch__plate::after { content: ""; position: absolute; inset: 0; background: var(--plate-fade, none); }
 
-.endch__plate .loop, .epi__art .loop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.endch__plate .frame__cap, .epi__art .frame__cap { z-index: 3; }
-.g7 .ch__plate, .night .ch__plate { left: 35%; }
-.night .ch__plate img { opacity: 0.5; }
-.g7 .ch__plate img, .night .ch__plate img { object-position: 100% 50%; }
-.g7 .ch__plate--fade::after, .night .ch__plate--fade::after { background: linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 40%, transparent) 30%, transparent 55%); }
-.g7 .ch__plate img { opacity: 0.42; object-position: 60% 50%; }
-.g7 .ch__plate { left: 32%; }
-.ch__plate--right img { object-position: 85% 50%; }
-.ch__plate--left img { object-position: 15% 50%; }
-.ch__plate--fade-r::after { content: ""; position: absolute; inset: 0; background: linear-gradient(270deg, var(--bg) 0%, var(--bg) 44%, color-mix(in srgb, var(--bg) 50%, transparent) 56%, transparent 70%); }
-
-.decade .ch__plate--fade-r::after { background: linear-gradient(270deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 70%, transparent) 30%, transparent 58%); }
-.decade .ch__plate img, .decade .ch__plate .loop { transform: scaleX(-1); object-position: 0% 50%; }
-.report .ch__plate--fade-r::after { background: linear-gradient(270deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 80%, transparent) 35%, transparent 62%); }
-.report .ch__plate img, .report .ch__plate .loop { transform: scaleX(-1); object-position: 0% 50%; }
-.decade .ch__plate img, .report .ch__plate img { object-position: 100% 50%; }
-@media (max-width: 899px) { .ch__plate--left { display: none; } }
-.ch__plate--fade::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 0%, var(--bg) 30%, color-mix(in srgb, var(--bg) 55%, transparent) 46%, transparent 60%); }
-@media (max-width: 899px) { .ch__plate--fade::after { background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 40%, transparent) 30%, var(--bg) 52%); } .ch__plate img { object-position: 60% 0%; } }
-.ch > * { position: relative; z-index: 1; }
-.ch > .ch__plate { position: absolute; inset: 0; z-index: 0; }
+.g7 .ch__plate { left: 32%; --plate-pos: 60% 50%; --plate-a: 0.18; --plate-fade: linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 40%, transparent) 30%, transparent 55%); }
+.night .ch__plate { left: 35%; --plate-pos: 50% 50%; --plate-a: 0.5; --plate-fade: linear-gradient(90deg, var(--bg) 0 38%, transparent 60%); }
+.decade .ch__plate { --plate-pos: 0% 50%; --plate-flip: scaleX(-1); --plate-fade: linear-gradient(270deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 70%, transparent) 30%, transparent 58%); }
+.report .ch__plate { --plate-pos: 0% 50%; --plate-flip: scaleX(-1); --plate-fade: linear-gradient(270deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 80%, transparent) 35%, transparent 62%); }
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .g7 .ch__plate, .night .ch__plate { left: 0; --plate-pos: 60% 100%; }
+  .g7 .ch__plate { --plate-fade: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 60%, transparent) 45%, transparent 75%); }
+  .night .ch__plate { --plate-fade: linear-gradient(180deg, var(--bg) 0 40%, transparent 70%); }
+  .decade .ch__plate, .report .ch__plate { display: none; }
+}
 
 /* ---------- chapter 0: cover ---------- */
-.cover__title { margin: 0; font-size: clamp(3.6rem, 10vw, 9rem); text-transform: uppercase; }
-.cover__title .hl { font-size: 0.5em; display: inline-block; margin-top: 0.15em; }
-.cover__pitch { margin: 1.4rem 0 0; }
-.cover__meta { margin-top: 1.2rem; display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); }
-.cover__hint { margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.6em; font-family: var(--font-ui); font-weight: 700; }
+.cover__title { margin: 0; font-size: var(--fs-h-cover); text-transform: uppercase; }
+.cover__title .hl { display: block; width: fit-content; font-size: 0.5em; line-height: 1; margin-top: 0.1em; }
+.cover__text { --gap: var(--s-4); }
+.cover__meta { display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); }
+.cover__hint { display: inline-flex; align-items: center; gap: 0.6em; font-family: var(--font-ui); font-weight: 700; }
 .cover__hint .disc { font-size: 1rem; }
-.cover__art { position: relative; justify-self: end; width: min(100%, 34rem); max-height: 100%; }
-.cover__art img { width: 100%; height: 100%; max-height: calc(100svh - var(--bar-h) - 8rem); object-fit: contain; object-position: right center; }
-@media (max-width: 899px) { .cover .ch__grid { grid-template-rows: auto 1fr; align-items: start; } .cover__art { width: 100%; justify-self: stretch; } .cover__art img { max-height: 36svh; object-position: center; } .cover__title { font-size: clamp(2.8rem, 13vw, 4.5rem); } .cover__hint { margin-top: 1rem; } }
+.cover__art { position: relative; margin: 0; min-height: 0; height: 100%; display: flex; justify-content: flex-end; align-items: flex-start; }
+.cover__art img { width: auto; height: 100%; max-width: 100%; object-fit: contain; object-position: right top; }
+.cover .checker { margin-inline: calc(-1 * var(--page-x)); margin-top: var(--s-4); }
+.cover .ch__grid { align-self: stretch; grid-template-rows: minmax(0, 1fr); }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  /* the cover art is portrait, so the cover gives the title the wide column */
+  .cover .ch__grid { grid-template-columns: var(--split-r); max-height: none; }
+  .cover .ch__grid > * { max-height: 100%; }
+}
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .cover .ch__grid { grid-template-rows: auto minmax(0, 1fr); }
+  .cover__text { --gap: var(--s-4); }
+  .cover__art { justify-content: center; }
+  .cover__art img { object-position: center top; }
+  .cover__hint .cutout--hand { width: 48px; height: 48px; }
+}
+/* stacked and short: the art cannot fit under the title, so it goes */
+@media (max-width: 899px) and (max-height: 720px), (max-aspect-ratio: 4/5) and (max-height: 720px) { .cover__art { display: none; } }
 
 /* ---------- chapter 1: game 7 ---------- */
-.g7__stage { display: grid; gap: 1.2rem; align-content: center; justify-items: start; }
+.g7__stage { position: relative; padding-right: clamp(80px, 9vw, 140px); }
+.g7__stage > * { max-width: 100%; }
 .g7__board { width: min(100%, 34rem); }
-.g7__big { margin: 0; font-size: clamp(5rem, 18vw, 13rem); line-height: 0.85; letter-spacing: -0.03em; color: var(--chalk); font-variant-numeric: tabular-nums; }
 .g7__cap { max-width: 30rem; }
-.g7__cap .kicker { display: block; margin-bottom: 0.3rem; }
-.g7__cap p { margin: 0; font-family: var(--font-ui); font-weight: 500; font-size: var(--t-2); line-height: 1.35; }
 .g7__arrows { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.g7__court { position: relative; z-index: 2; }
-.g7__court { width: min(100%, 40rem); justify-self: center; }
-@media (max-width: 899px) { .g7__court { display: none; } }
+.g7__court { position: relative; z-index: 2; width: 100%; min-height: 0; }
+.g7__court .gfx svg { max-height: var(--stage-h); }
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .g7 .ch__grid { align-self: stretch; grid-template-rows: auto minmax(0, 1fr); }
+  .g7__stage { padding-right: 0; }
+  .g7__court { height: 100%; }
+  .g7__court .gfx, .g7__court .gfx svg { height: 100%; max-height: 100%; }
+}
+@media (max-width: 899px) { .g7__court, .g7__arrows, .cutout--watch { display: none; } }
 
 /* ---------- chapter 2: the paper ---------- */
-.paperch { position: relative; padding-bottom: 7rem; }
-.paperch__head { position: relative; z-index: 1; display: grid; gap: 1rem; padding: clamp(1.5rem, 5vh, 3rem) var(--gutter) 0; align-items: end; width: min(100%, 76rem); margin-inline: auto; }
-@media (min-width: 900px) { .paperch__head { grid-template-columns: 1.2fr 1fr; } }
-.paperch__head h2 { margin: 0.4rem 0 0; font-size: clamp(var(--t-5), 6.5vw, var(--t-8)); text-transform: uppercase; }
-.paperch__head p { margin: 0.8rem 0 0; font-family: var(--font-ui); font-weight: 500; font-size: var(--t-1); max-width: 36rem; }
-.paperch__plate { position: relative; aspect-ratio: 21 / 9; margin: 0; overflow: hidden; }
-.paperch__plate img, .paperch__plate .loop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.paperch__plate .frame__cap { z-index: 3; }
-.paperch__body { position: relative; z-index: 1; width: min(100% - 2 * var(--gutter), 66rem); margin-inline: auto; }
+/* scrolling chapters share the page edge and one content measure; on desktop they keep a column free for the controls */
+.chapter--scrolls { padding: var(--stage-pt) var(--page-x) calc(var(--ctl-bar) + var(--s-7)); }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) { .chapter--scrolls { padding-right: calc(var(--page-x) + var(--ctl-reserve)); } }
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) { .chapter--scrolls { padding-bottom: calc(var(--ctl-bar) + var(--s-4)); } }
+.chapter--scrolls > * { max-width: var(--scroll-max); }
+/* speckle that covers the whole scroll, not just the first screen */
+.chapter--scrolls.speckle::after { display: none; }
+.chapter--scrolls.speckle { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-attachment: local; background-blend-mode: multiply; }
+.chapter--scrolls.speckle.scene--dark { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .87 0 0 0 0 .3 0 0 0 .121 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-blend-mode: screen; }
+
+/* framed media: the frame caption may sit outside the box; the media is clipped instead */
+.paperch__plate, .epi__art, .endch__plate { overflow: visible; }
+:is(.paperch__plate, .epi__art, .endch__plate) :is(img, .loop) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: inset(0); }
+:is(.paperch__plate, .epi__art, .endch__plate) .frame__cap { z-index: 3; background: var(--bg); }
+
+.paperch__head { position: relative; z-index: 1; display: grid; gap: var(--s-5); align-items: center; }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) { .paperch__head { grid-template-columns: var(--split); column-gap: var(--col-gap); } }
+.paperch__plate { position: relative; aspect-ratio: 16 / 10; margin: 0; }
+.paperch__plate :is(img, .loop) { object-position: 80% 50%; }
+@media (max-width: 599px) { .paperch__plate { aspect-ratio: 4 / 3; } }
+.paperch__body { position: relative; z-index: 1; }
 .sheet { position: relative; margin-top: clamp(1.5rem, 4vh, 3rem); padding: clamp(1.4rem, 4vw, 3rem); background: var(--surface); border: var(--frame) solid var(--ink); }
 .sheet::before { content: ""; position: absolute; inset: 8px; border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); pointer-events: none; }
 .sheet > * { position: relative; }
@@ -114,45 +153,66 @@
 .cover-sheet .paper-cover-line { font-family: var(--font-paper); color: var(--steel); font-size: clamp(var(--t-5), 6vw, var(--t-7)); font-weight: 600; line-height: 1.05; margin: 0; }
 .cover-sheet .paper-cover-sub { font-family: var(--font-paper); color: var(--steel); letter-spacing: 0.14em; font-size: var(--t-2); margin: 0.6rem 0 0; }
 .cover-sheet .paper-cover-by { font-family: var(--font-paper); color: var(--fg-muted); font-size: var(--t-1); margin: 1.2rem 0 0; }
+@media (max-width: 599px) {
+  .sheet { padding: 1rem; }
+  .sheet::before { inset: 4px; }
+  .sheet p, .sheet li { font-size: var(--t-1); }
+  .sheet .paper-h { font-size: var(--t-3); }
+}
+@media (min-width: 900px) and (max-width: 1099px) { .sheet p, .sheet li, .sheet .paper-h { max-width: var(--measure); } }
 .fig-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin: 0 0 0.75rem; }
 .fig-head .kicker { color: var(--fg-muted); font-family: var(--font-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.04em; }
 .sheet p.fig-then-note, .fig-then-note { font-family: var(--font-mono); font-size: 12px; color: var(--note); margin: 0.6rem 0 0; }
 
 /* ---------- chapter 3: the night before ---------- */
-.night__stage { position: relative; min-height: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 0.5rem; align-self: stretch; align-content: center; }
-.night__gfx { position: relative; width: 100%; max-width: 44rem; aspect-ratio: 16 / 9; max-height: 100%; justify-self: center; }
-.night__big { margin: 0; font-size: clamp(4rem, 12vw, 9rem); line-height: 0.85; letter-spacing: -0.03em; color: var(--chalk); font-variant-numeric: tabular-nums; }
-.night__cap { max-width: 32rem; }
-.night__cap .kicker { display: block; margin-bottom: 0.3rem; }
-.night__cap p { margin: 0 0 0.4rem; font-family: var(--font-ui); font-weight: 500; font-size: var(--t-2); line-height: 1.35; }
+.night__cap { --gap: var(--s-2); max-width: 32rem; }
 .night__cap.is-quiet p { font-family: var(--font-paper); font-style: italic; color: var(--fg-muted); }
-@media (max-width: 899px) { .night .ch__grid { grid-template-rows: 1fr auto; } .night__cap { align-self: end; } }
+.night__stage { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: var(--s-2); min-width: 0; min-height: 0; }
+.night__big:empty { display: none; }
+.night__gfx { position: relative; min-width: 0; width: min(100%, 44rem); aspect-ratio: 16 / 9; max-height: calc(var(--stage-h) - var(--fs-number) - var(--s-2)); }
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .night .ch__grid { grid-template-rows: auto minmax(0, 1fr); align-content: start; align-self: stretch; }
+  .night__cap { align-self: start; }
+  .night__gfx { width: 100%; aspect-ratio: auto; height: min(34svh, 16rem); max-height: none; }
+}
 
 /* ---------- chapter 4: ten years later ---------- */
-.decade__panel { position: relative; padding: clamp(1rem, 2.5vw, 1.75rem); background: var(--surface); max-height: 100%; overflow: auto; }
-.decade__side, .report__side { display: grid; gap: 1rem; align-content: center; max-width: 30rem; justify-self: start; padding: 1rem 1.2rem 1.2rem; margin-left: -1.2rem; background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.decade__side h2 { margin: 0; font-size: clamp(var(--t-5), 6vw, var(--t-8)); text-transform: uppercase; }
 .decade__steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.6rem; counter-reset: s; }
 .decade__steps li { position: relative; padding-left: 2.4rem; font-family: var(--font-ui); font-weight: 500; font-size: var(--t-1); line-height: 1.4; counter-increment: s; }
 .decade__steps li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 1.7rem; height: 1.7rem; border-radius: 50%; background: var(--sun); color: var(--ink); font-family: var(--font-display); font-weight: 900; display: grid; place-items: center; }
-.graphic-card .controls { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; margin-top: 1rem; font-family: var(--font-ui); font-weight: 600; font-size: var(--t-0); color: var(--fg-muted); }
+/* the panel keeps one size across beats: it fills the stage and centres its chart; controls sit above the chart */
+.decade__panel { display: flex; flex-direction: column; justify-content: safe center; gap: var(--s-4); }
+.decade__panel .chart svg { max-height: calc(100svh - var(--bar-h) - 22rem); }
+/* desktop: the chart shrinks to the panel instead of the panel scrolling */
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .decade__panel > .chart { flex: 0 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .decade__panel .chart > .chart-body { flex: 0 1 auto; min-height: 0; }
+  .decade__panel .chart .chart-svg { max-height: 100%; }
+}
+.graphic-card .controls { order: -1; display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; margin: 0; font-family: var(--font-ui); font-weight: 600; font-size: var(--t-0); color: var(--fg-muted); }
 .graphic-card .controls label { display: flex; align-items: center; gap: 0.7rem; flex: 1 1 14rem; }
 .graphic-card .controls output { font-weight: 700; color: var(--fg); min-width: 3.5ch; text-align: right; font-variant-numeric: tabular-nums; }
-@media (max-width: 899px) {
-  .decade, .report { overflow-y: auto; overscroll-behavior: contain; display: block; padding-bottom: 7rem; }
-  .decade .ch__grid, .report .ch__grid { display: grid; grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
-  .decade__side h2 { font-size: var(--t-4); }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .decade .ch__grid, .report .ch__grid { align-self: stretch; grid-template-rows: minmax(0, 1fr); }
+  .decade__panel, .report__list { align-self: stretch; }
+}
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) and (max-height: 760px) {
+  .decade .chart .chart-title { font-size: var(--t-3); }
+  .decade .chart .chart-note { display: none; }
+}
+/* stacked: decade and report become plain scrolling pages */
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .decade, .report { display: block; overflow-y: auto; overscroll-behavior: contain; padding-bottom: calc(var(--ctl-bar) + var(--s-4)); }
+  .decade__panel, .report__list { overflow: visible; }
   .decade__steps li { font-size: var(--t-0); }
-  .decade__panel { max-height: none; overflow: visible; }
-  .report__list { max-height: none; overflow: visible; }
-  .g7__arrows { display: none; }
-  .g7 .ch__plate--fade::after, .night .ch__plate--fade::after { background: linear-gradient(180deg, transparent 0%, transparent 38%, var(--bg) 58%); }
-  .night__big { font-size: clamp(3.5rem, 16vw, 6rem); }
+  .decade__panel .chart svg { max-height: none; }
 }
 
 /* ---------- chapter 5: report card ---------- */
-.report__side h2 { margin: 0; font-size: clamp(var(--t-5), 6vw, var(--t-8)); text-transform: uppercase; }
-.report__list { display: grid; max-height: 100%; overflow: auto; align-self: stretch; align-content: center; }
+.report__list { display: grid; align-content: safe center; }
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .report__list { padding-bottom: var(--s-6); -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - var(--s-6)), transparent); mask-image: linear-gradient(180deg, #000 calc(100% - var(--s-6)), transparent); }
+}
 .claim { display: grid; gap: 0.6rem; padding: 1rem 0; border-top: 1px solid var(--rule); }
 .claim:last-child { border-bottom: 1px solid var(--rule); }
 @media (min-width: 1200px) { .claim { grid-template-columns: 1fr 13rem; align-items: start; gap: 1.5rem; } .claim .chip { justify-self: end; } }
@@ -169,21 +229,13 @@ dialog.evidence[open] { opacity: 1; transform: none; }
 @starting-style { dialog.evidence[open] { opacity: 0; transform: scale(0.97); } }
 dialog.evidence::backdrop { background: rgba(18, 18, 18, 0.7); }
 dialog.evidence .close { float: right; margin: 0 0 0.75rem 1rem; }
-@media (max-width: 899px) { .report__side h2 { font-size: var(--t-4); } }
 
 /* ---------- chapter 6: backlash, epilogue, method (scrolls) ---------- */
-.endch { position: relative; padding: clamp(2rem, 6vh, 4rem) var(--gutter) 7rem; display: grid; gap: clamp(3rem, 8vh, 6rem); }
+.endch { position: relative; display: grid; gap: clamp(3rem, 8vh, 6rem); }
 .endch > * { position: relative; z-index: 1; }
-.endch__plate { position: relative; height: min(38svh, 26rem); margin-top: 1.2rem; padding: 0; overflow: visible; }
-.endch__plate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.endch__plate img { width: 100%; height: 100%; object-fit: cover; }
-.endch__plate .frame__cap { background: var(--bg); }
-.epi__art { position: relative; aspect-ratio: 21 / 9; overflow: hidden; }
-.epi__art img { width: 100%; height: 100%; object-fit: cover; }
-.epi__art .frame__cap { background: var(--bg); }
-.endch .wrap { width: min(100%, 66rem); margin-inline: auto; }
-.section-head { display: grid; gap: 0.4rem; max-width: 42rem; }
-.section-head h2 { margin: 0; font-size: clamp(var(--t-5), 7vw, var(--t-8)); text-transform: uppercase; }
+.endch__plate { position: relative; aspect-ratio: 21 / 9; padding: 0; }
+.epi__art { position: relative; aspect-ratio: 21 / 9; margin: 0 0 var(--s-5); }
+.section-head { --gap: var(--s-4); max-width: 42rem; }
 .quotes { margin-top: 2rem; display: grid; }
 .quote { margin: 0; padding: 1.4rem 0; border-top: 1px solid var(--rule); display: grid; gap: 0.5rem; }
 .quote:last-child { border-bottom: 1px solid var(--rule); }
@@ -191,12 +243,11 @@ dialog.evidence .close { float: right; margin: 0 0 0.75rem 1rem; }
 .quote .kicker { font-family: var(--font-mono); font-weight: 400; font-size: 12px; line-height: 1.4; color: var(--fg-muted); }
 .quote p { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(var(--t-3), 3.2vw, var(--t-5)); line-height: 0.95; letter-spacing: -0.015em; text-wrap: balance; }
 .quote a { font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); justify-self: start; }
-.epi__grid { display: grid; gap: 2rem; align-items: start; margin-top: 2rem; }
-@media (min-width: 900px) { .epi__grid { grid-template-columns: 2fr 1fr; } }
-.epi__chart { padding: clamp(1rem, 2.6vw, 1.75rem); background: var(--surface); }
+.epi__grid { display: grid; gap: var(--s-6); align-items: start; margin-top: var(--s-6); }
+@media (min-width: 1200px) and (min-aspect-ratio: 4/5) { .epi__grid { grid-template-columns: var(--split-r); column-gap: var(--col-gap); } }
 .epi__lines p { font-family: var(--font-ui); font-weight: 500; font-size: var(--t-2); line-height: 1.4; margin: 0 0 0.9rem; }
-.stamp { display: inline-block; font-family: var(--font-mono); font-size: 12px; color: var(--ink); padding: 0.4em 0.8em; background: var(--sun); }
-.closing { margin: 0; font-size: clamp(var(--t-4), 4vw, var(--t-6)); line-height: 0.95; max-width: 26ch; }
+.stamp { display: inline-block; white-space: nowrap; font-family: var(--font-mono); font-size: 12px; color: var(--ink); padding: 0.4em 0.8em; background: var(--sun); }
+.closing { margin: var(--s-7) 0 0; font-size: clamp(var(--t-4), 4vw, var(--t-6)); line-height: 0.95; max-width: 26ch; }
 .method__grid { display: grid; gap: 1.5rem 2.5rem; margin-top: 1.5rem; }
 @media (min-width: 820px) { .method__grid { grid-template-columns: repeat(3, 1fr); } }
 .method__item h3 { margin: 0 0 0.4rem; font-family: var(--font-display); font-weight: 800; font-size: var(--t-3); line-height: 1; text-transform: uppercase; }

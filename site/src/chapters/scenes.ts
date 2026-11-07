@@ -17,14 +17,14 @@ export function buildCover(): HTMLElement {
   return h(`
   <section class="ch cover speckle">
     <div class="ch__grid">
-      <div>
+      <div class="stack cover__text">
         <p class="kicker">A 2016 paper on the three-pointer, re-scored in 2026</p>
         <h1 class="display cover__title">The Long<br>Range Game<br>${hl('Revisited')}</h1>
         <p class="mono mono--block cover__pitch">In 2016 a college senior argued the three-pointer was taking over the NBA, twelve hours after the most prolific three-point team in history lost the Finals at home. Ten years later, the data says who was right.</p>
         <div class="cover__meta"><span>Sahil Shah</span><span>NBA.com shot-location data, 1996-97 to 2025-26</span><span>7 chapters, about 6 minutes</span></div>
         <p class="cover__hint" data-no-advance><img class="cutout cutout--hand" src="/media/v3/elements/hand-pointing-right.webp" alt="" width="120" height="120" decoding="async"> Tap anywhere, swipe, or press the arrow keys</p>
       </div>
-      <figure class="cover__art" style="margin:0">
+      <figure class="cover__art">
         ${plate('portrait-cover', 'Halftone cutout of a hand palming a basketball with a blue wireframe torus behind it', '', '(min-width: 900px) 40vw, 90vw', true)}
         ${sparkle('-6px', '8%')}${sparkle('96%', '62%', 14)}
       </figure>
@@ -40,12 +40,12 @@ export function buildGame7(): HTMLElement {
     <div class="ch__plate ch__plate--right ch__plate--fade">${plate('game7', '', '', '100vw')}${loop('game7')}</div>
     <div class="g7__arrows" id="g7-arrows" aria-hidden="true"></div>
     <div class="ch__grid">
-      <div class="g7__stage">
+      <div class="stack g7__stage">
         <p class="kicker" id="g7-kicker">June 19, 2016 · Oracle Arena · Game 7</p>
         <img class="cutout cutout--watch" src="/media/v3/elements/stopwatch.webp" alt="" width="160" height="160" loading="lazy" decoding="async">
-        <p class="display g7__big" id="g7-score">89–89</p>
+        <p class="display h-number g7__big" id="g7-score">89–89</p>
         <div class="g7__board" id="g7-board"></div>
-        <div class="g7__cap" id="g7-cap"><p>Score tied. Fifty-three seconds left.</p></div>
+        <div class="g7__cap" id="g7-cap"><p class="lede">Score tied. Fifty-three seconds left.</p></div>
       </div>
       <div class="g7__court" id="g7-court" aria-hidden="true"></div>
     </div>
@@ -57,12 +57,12 @@ export function buildPaper(): HTMLElement {
   const sec = h(`
   <section class="paperch speckle">
     <div class="paperch__head">
-      <div>
+      <div class="stack">
         <p class="kicker">June 20, 2016</p>
-        <h2 class="display">The morning after, a college senior turned ${hl('this')} in.</h2>
-        <p>He argued the three-pointer was the future of basketball. Twelve hours earlier, the most prolific three-point team ever had lost the Finals at home. The text below is verbatim. The figures are live charts from the 2026 pipeline, clipped to the paper's range. Yellow notes are 2026.</p>
+        <h2 class="display h-chapter">The morning after, a college senior turned ${hl('this')} in.</h2>
+        <p class="lede">He argued the three-pointer was the future of basketball. Twelve hours earlier, the most prolific three-point team ever had lost the Finals at home. The text below is verbatim. The figures are live charts from the 2026 pipeline, clipped to the paper's range. Yellow notes are 2026.</p>
       </div>
-      <figure class="paperch__plate frame" style="margin:0">${plate('paper', 'Halftone cutout of a clipboard with stapled pages and a pencil, a blue wireframe cylinder beside it', '', '(min-width: 900px) 45vw, 100vw')}${loop('paper')}<figcaption class="frame__cap">EXHIBIT A · THE PAPER</figcaption></figure>
+      <figure class="paperch__plate frame">${plate('paper', 'Halftone cutout of a clipboard with stapled pages and a pencil, a blue wireframe cylinder beside it', '', '(min-width: 900px) 45vw, 100vw')}${loop('paper')}<figcaption class="frame__cap">EXHIBIT A · THE PAPER</figcaption></figure>
     </div>
     <div class="paperch__body"></div>
   </section>`);
@@ -91,9 +91,9 @@ export function buildNight(): HTMLElement {
   <section class="ch night speckle">
     <div class="ch__plate ch__plate--right ch__plate--fade">${plate('night', '', '', '100vw')}${loop('night')}</div>
     <div class="ch__grid">
-      <div class="night__cap" id="night-cap"><span class="kicker">${esc(act2.beats[0].kicker)}</span>${act2.beats[0].lines.map((l) => `<p>${esc(l)}</p>`).join('')}</div>
+      <div class="stack night__cap" id="night-cap"><span class="kicker">${esc(act2.beats[0].kicker)}</span>${act2.beats[0].lines.map((l) => `<p class="lede">${esc(l)}</p>`).join('')}</div>
       <div class="night__stage">
-        <p class="display night__big" id="night-big">73–9</p>
+        <p class="display h-number night__big" id="night-big">73–9</p>
         <div class="night__gfx" id="night-gfx" aria-hidden="true"></div>
       </div>
     </div>
@@ -125,13 +125,13 @@ export function buildDecade(): HTMLElement {
   <section class="ch decade speckle">
     <div class="ch__plate ch__plate--left ch__plate--fade-r">${plate('decade', '', '', '100vw')}${loop('decade')}</div>
     <div class="ch__grid">
-      <div class="decade__side">
+      <div class="stack scrim decade__side">
         <p class="kicker">Ten years later</p>
-        <h2 class="display" id="decade-title">${esc(decadeBeats[0].title)}</h2>
+        <h2 class="display h-chapter" id="decade-title">${esc(decadeBeats[0].title)}</h2>
         <ol class="decade__steps" id="decade-steps"></ol>
         <p class="mono" id="decade-foot">Same pipeline, same buckets, no splice.</p>
       </div>
-      <div class="decade__panel frame graphic-card">
+      <div class="panel ch__scroll decade__panel frame graphic-card">
         <span class="sr-only" id="decade-cap">FIG. 1-1 · 1998–2026</span>
         ${decadeBeats.map((b) => `<div class="chart" id="decade-${b.id}" hidden></div>`).join('')}
         <div class="controls" id="decade-fig12-controls" hidden>${fig12Controls}</div>
@@ -148,12 +148,12 @@ export function buildReport(): HTMLElement {
   <section class="ch report speckle">
     <div class="ch__plate ch__plate--left ch__plate--fade-r">${plate('report', '', '', '100vw')}${loop('report')}</div>
     <div class="ch__grid">
-      <div class="report__side">
+      <div class="stack scrim report__side">
         <p class="kicker">The 2016 report card</p>
-        <h2 class="display">Credit first. Then each correction gets ${hl('one sentence')}.</h2>
-        <p class="mono mono--block" style="margin-top:1rem">The paper got the thesis right on the one day it looked most wrong, and its main chart matches a 2026 reconstruction within half a point.</p>
+        <h2 class="display h-chapter">Credit first. Then each correction gets ${hl('one sentence')}.</h2>
+        <p class="lede">The paper got the thesis right on the one day it looked most wrong, and its main chart matches a 2026 reconstruction within half a point.</p>
       </div>
-      <div class="report__list" data-no-advance>
+      <div class="ch__scroll report__list" data-no-advance>
         ${reportCard.map((c, i) => `
         <article class="claim">
           <div>
@@ -174,9 +174,9 @@ export function buildEnd(): HTMLElement {
   <section class="endch speckle">
     <div class="wrap endch__plate frame">${plate('backlash', 'Six yellow discs in a row, four crossed out, two still glowing, hand-drawn on dark paper', '', '(min-width: 900px) 66rem, 100vw')}${loop('backlash')}<span class="frame__cap">FIG. B · 2024–2026</span></div>
     <div class="wrap">
-      <div class="section-head">
+      <div class="stack section-head">
         <p class="kicker">The backlash</p>
-        <h2 class="display">Then the league asked if it had gone ${hl('too far')}.</h2>
+        <h2 class="display h-chapter">Then the league asked if it had gone ${hl('too far')}.</h2>
       </div>
       <div class="quotes">
         ${backlash.map((q, i) => `
@@ -187,23 +187,23 @@ export function buildEnd(): HTMLElement {
       </div>
     </div>
     <div class="wrap">
-      <div class="section-head">
+      <div class="stack section-head">
         <p class="kicker">Epilogue</p>
-        <h2 class="display" id="epi-h">${esc(epilogue.title)}</h2>
+        <h2 class="display h-chapter" id="epi-h">${esc(epilogue.title)}</h2>
       </div>
       <div class="epi__grid">
-        <div class="epi__chart frame chart" id="epilogue-chart"><span class="frame__cap">FIG. E · 3PA PER GAME · 1997–2026</span></div>
+        <div class="panel epi__chart frame chart" id="epilogue-chart"><span class="frame__cap">FIG. E · 3PA PER GAME · 1997–2026</span></div>
         <div class="epi__lines">
-          <figure class="frame epi__art" style="margin:0 0 1.2rem">${plate('epilogue', 'A blue wireframe arc rising across the frame with a halftone basketball at its peak', '', '(min-width: 900px) 30vw, 90vw')}${loop('epilogue')}<figcaption class="frame__cap">FIG. E · THE ARC</figcaption></figure>
+          <figure class="frame epi__art">${plate('epilogue', 'A blue wireframe arc rising across the frame with a halftone basketball at its peak', '', '(min-width: 900px) 30vw, 90vw')}${loop('epilogue')}<figcaption class="frame__cap">FIG. E · THE ARC</figcaption></figure>
           ${epilogue.lines.map((l) => `<p>${esc(l)}</p>`).join('')}
           <p><span class="stamp" id="data-stamp">Data through — · pulled —</span></p>
           <p class="mono">The weekly refresh job keeps this chart current. The page keeps grading the paper.</p>
         </div>
       </div>
-      <p class="closing display" style="margin-top:3rem">${esc(epilogue.closing)}</p>
+      <p class="closing display">${esc(epilogue.closing)}</p>
     </div>
     <div class="wrap">
-      <div class="section-head"><p class="kicker">${esc(method.title)}</p></div>
+      <div class="stack section-head"><p class="kicker">${esc(method.title)}</p></div>
       <div class="method__grid">
         ${['One pipeline', 'Every number traceable', 'Built with skills'].map((k, i) => `<div class="method__item"><h3>${k}</h3><p>${esc(method.lines[i])}</p></div>`).join('')}
       </div>

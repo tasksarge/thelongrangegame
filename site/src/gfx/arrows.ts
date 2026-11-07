@@ -23,8 +23,15 @@ export interface ArrowOpts {
   duration?: number;
 }
 export interface ArrowsOpts {
+  /** Target as 0..1 fractions of the container (default { x: 0.5, y: 0.5 }). Ignored when `targetEl` is set. */
   target?: ArrowPoint;
+  /** Aim at this element's box instead: its center (or `targetPoint`) measured relative to the arrows container,
+   *  re-resolved on container resize, window resize and scroll. Works with SVG elements, e.g. court.hoopEl(). */
+  targetEl?: Element;
+  /** Which point of `targetEl` to aim at (default 'center'). */
+  targetPoint?: 'center' | 'top' | 'bottom';
   color?: ArrowColor;
+  /** Fraction of each arrow's length to stop short of the target (default 0.1; with `targetEl`, defaults to the element's half-size + 12px). */
   standoff?: number;
   seed?: number;
   /** play() duration in ms (default 900 + 180ms per extra arrow). */
@@ -92,22 +99,58 @@ function reveal(n: ArrowNodes, p: number): void {
   else { n.head.removeAttribute('display'); n.head.setAttribute('stroke-dasharray', '1'); n.head.setAttribute('stroke-dashoffset', String(1 - headT)); }
 }
 
-function mount(container: HTMLElement, color: ArrowColor, specs: ArrowSpec[], duration: number): GfxHandle {
+/** Resolve a target element's point as fractions of the arrows box. */
+function resolveTarget(box: HTMLElement, target: Element, point: 'center' | 'top' | 'bottom'): { at: ArrowPoint; halfPx: number; box: DOMRect } | null {
+  const b = box.getBoundingClientRect(), t = target.getBoundingClientRect();
+  if (b.width <= 0 || b.height <= 0 || (t.width <= 0 && t.height <= 0)) return null;
+  const y = point === 'top' ? t.top : point === 'bottom' ? t.bottom : t.top + t.height / 2;
+  return { at: { x: (t.left + t.width / 2 - b.left) / b.width, y: (y - b.top) / b.height }, halfPx: Math.max(t.width, t.height) / 2, box: b };
+}
+
+function mount(container: HTMLElement, color: ArrowColor, specs: ArrowSpec[], duration: number, aim?: { el: Element; point: 'center' | 'top' | 'bottom'; standoff?: number }): GfxHandle {
   const el = document.createElement('div');
   el.className = 'gfx gfx-arrows';
   el.setAttribute('aria-hidden', 'true');
   const svg = svgEl('svg', { preserveAspectRatio: 'none' }, el);
   const nodes = specs.map((s) => build(svg, color, s));
   let W = 0, H = 0;
+  const relayout = (): void => {
+    if (aim) {
+      const t = resolveTarget(el, aim.el, aim.point);
+      if (t) {
+        for (const s of specs) {
+          s.to = t.at;
+          if (aim.standoff === undefined) {
+            // Stop just outside the target element: its half-size plus a 12px gap, as a fraction of this arrow's length.
+            const len = Math.hypot((t.at.x - s.from.x) * t.box.width, (t.at.y - s.from.y) * t.box.height) || 1;
+            s.standoff = Math.min(0.4, (t.halfPx + 12) / len);
+          }
+        }
+      }
+    }
+    for (const n of nodes) layout(n, W, H);
+  };
   const stop = observeSize(el, (w, h) => {
     W = w; H = h;
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    for (const n of nodes) layout(n, W, H);
+    relayout();
   });
+  // The target element can move independently of this box (layout, scroll, its own resize).
+  let stopAim = (): void => {};
+  if (aim) {
+    const onMove = (): void => relayout();
+    window.addEventListener('resize', onMove);
+    window.addEventListener('scroll', onMove, true);
+    const ro = typeof ResizeObserver === 'function' ? new ResizeObserver(onMove) : null;
+    ro?.observe(aim.el);
+    const raf = requestAnimationFrame(onMove); // once more after first paint, when the target has its final box
+    stopAim = () => { window.removeEventListener('resize', onMove); window.removeEventListener('scroll', onMove, true); ro?.disconnect(); cancelAnimationFrame(raf); };
+  }
   const player = createPlayer((p) => { for (const n of nodes) reveal(n, p); }, duration);
   player.set(0);
   container.appendChild(el);
-  return { el, play: player.play, pause: player.pause, set: player.set, destroy: () => { player.destroy(); stop(); el.remove(); } };
+  if (aim) relayout();
+  return { el, play: player.play, pause: player.pause, set: player.set, destroy: () => { player.destroy(); stop(); stopAim(); el.remove(); } };
 }
 
 export function createArrow(container: HTMLElement, opts: ArrowOpts): GfxHandle {
@@ -124,5 +167,6 @@ export function createArrows(container: HTMLElement, origins: ArrowPoint[], opts
     from, to: target, curve: (i % 2 ? -1 : 1) * (0.14 + ((i * 7) % 5) * 0.02), standoff: opts.standoff ?? 0.1,
     seed: (opts.seed ?? 5) * 31 + i, window: [i * stagger, i * stagger + 0.5],
   }));
-  return mount(container, opts.color ?? 'chalk', specs, opts.duration ?? 900 + 180 * (n - 1));
+  const aim = opts.targetEl ? { el: opts.targetEl, point: opts.targetPoint ?? 'center', standoff: opts.standoff } : undefined;
+  return mount(container, opts.color ?? 'chalk', specs, opts.duration ?? 900 + 180 * (n - 1), aim);
 }

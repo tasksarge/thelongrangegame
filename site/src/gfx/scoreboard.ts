@@ -38,12 +38,13 @@ export function createScoreboard(container: HTMLElement, opts: ScoreboardOpts = 
 
   const el = htmlEl('div', 'gfx gfx-scoreboard');
   el.setAttribute('role', 'img');
-  const home = htmlEl('div', 'gfx-scoreboard__team gfx-scoreboard__team--home', el);
+  const grid = htmlEl('div', 'gfx-scoreboard__grid', el);
+  const home = htmlEl('div', 'gfx-scoreboard__team gfx-scoreboard__team--home', grid);
   htmlEl('span', 'gfx-scoreboard__label', home, 'Home');
   const homeNum = htmlEl('span', 'gfx-scoreboard__num', home);
-  const clockWrap = htmlEl('div', 'gfx-scoreboard__clock', el);
+  const clockWrap = htmlEl('div', 'gfx-scoreboard__clock', grid);
   const clockNum = htmlEl('span', 'gfx-scoreboard__num', clockWrap);
-  const away = htmlEl('div', 'gfx-scoreboard__team gfx-scoreboard__team--away', el);
+  const away = htmlEl('div', 'gfx-scoreboard__team gfx-scoreboard__team--away', grid);
   htmlEl('span', 'gfx-scoreboard__label', away, 'Away');
   const awayNum = htmlEl('span', 'gfx-scoreboard__num', away);
 
@@ -52,6 +53,7 @@ export function createScoreboard(container: HTMLElement, opts: ScoreboardOpts = 
     const slot = htmlEl('span', `gfx-scoreboard__slot${colon ? ' gfx-scoreboard__slot--colon' : ''}`, parent);
     const roll = htmlEl('span', 'gfx-scoreboard__roll', slot);
     roll.appendChild(digit(colon ? ':' : ''));
+    if (!colon) slot.setAttribute('data-empty', '');
     return { el: slot, roll, value: colon ? ':' : '', timer: 0 };
   };
   const settle = (slot: Slot): void => {
@@ -66,6 +68,7 @@ export function createScoreboard(container: HTMLElement, opts: ScoreboardOpts = 
   const rollTo = (slot: Slot, next: string): void => {
     if (slot.value === next) return;
     settle(slot);
+    if (next === '') slot.el.setAttribute('data-empty', ''); else slot.el.removeAttribute('data-empty');
     const up = rank(next) > rank(slot.value);
     if (prefersReducedMotion()) { slot.value = next; settle(slot); return; }
     const prev = slot.value;

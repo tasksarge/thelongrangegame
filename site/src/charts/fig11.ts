@@ -199,7 +199,7 @@ export function createFig11(container: HTMLElement, a?: Fig11Data | Fig11Options
 
     // story points: first, 2016, peak, latest — nothing else labeled
     const sp = storyPoints(pts);
-    const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), h);
+    const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), h, 80, pts);
     for (const { kind, p } of sp) {
       const target = state.mode === 'now' && p.year > PAPER_LAST ? body : g;
       if (kind === 'peak' || (kind === 'latest' && state.mode === 'now')) {

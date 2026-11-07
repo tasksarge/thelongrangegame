@@ -29,7 +29,8 @@
   max-width: 70ch;
 }
 .chart-body { position: relative; }
-.chart-svg { display: block; width: 100%; height: auto; overflow: visible; }
+/* width-driven; a container max-height on the svg scales the drawing down (viewBox + xMidYMid meet) and centres it */
+.chart-svg { display: block; width: 100%; max-width: 100%; height: auto; margin-inline: auto; overflow: visible; }
 .chart-svg text { font-family: var(--fd); font-variant-numeric: tabular-nums; }
 
 /* poster panel: thin inner frame + mono caption */
@@ -115,7 +116,8 @@
 /* under 560px (container width) the cells are too small for outlines: dots only, row labels kept */
 .heat--compact .heat-cell { border-color: transparent; }
 .heat--compact .heat-cell.is-col { border-color: var(--fg); }
-.heat-strip-title { font: 700 12px/1.3 var(--fd); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-muted); margin: 0 0 8px; }
+.heat-strip-title { font: 700 12px/1.3 var(--fd); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-muted); margin: 0 0 8px; min-width: 0; overflow-wrap: anywhere; }
+.heat-note { grid-column: 1 / -1; margin: 6px 0 0; font: 500 11px/1.4 var(--fd); color: var(--fg-muted); }
 .heat-legend { margin-top: 10px; font: 600 12px/1.4 var(--fd); color: var(--fg-muted); }
 .heat-legend-bar { display: flex; gap: 4px; align-items: center; height: 18px; }
 .heat-legend-step { display: block; border-radius: 50%; background: var(--accent); }
@@ -130,7 +132,8 @@
 }
 .heat-tip b { font-weight: 700; display: block; margin-bottom: 2px; }
 .heat-tip .is-on { color: var(--sun); }
-.heat-then { display: grid; grid-template-columns: auto 1fr 1fr; gap: 0 16px; }
+.heat-then { display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr); gap: 0 16px; max-width: 100%; }
+.heat-then > * { min-width: 0; }
 .heat-then .heat { grid-auto-rows: minmax(22px, 1fr); }
 @media (max-width: 560px) {
   .heat-then { gap: 0 8px; }

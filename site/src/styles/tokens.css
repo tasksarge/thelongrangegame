@@ -62,6 +62,32 @@
   --radius: 0px;
   --frame: 1.5px;
   --bar-h: 56px;
+  --ball: var(--blue);
+
+  /* layout: ONE page edge shared by the chapter bar, every chapter and the controls */
+  --page-max: 80rem;
+  --page-x: max(var(--gutter), (100vw - var(--page-max)) / 2);
+  --col-gap: clamp(1.5rem, 3vw, 3rem);
+  --split: minmax(0, 5fr) minmax(0, 7fr);     /* text | visual */
+  --split-r: minmax(0, 7fr) minmax(0, 5fr);   /* visual | text */
+  --ctl-h: 48px;
+  --ctl-inset: 1.25rem;
+  --ctl-bar: calc(var(--ctl-h) + 2 * var(--ctl-inset) + env(safe-area-inset-bottom, 0px));
+  --ctl-reserve: calc(2 * var(--ctl-h) + 0.5rem + 1.5rem); /* room kept right of scrolling text on desktop */
+  --stage-pt: clamp(1.25rem, 4svh, 2.5rem);
+  --stage-pb: var(--ctl-bar);
+  --stage-h: calc(100svh - var(--bar-h) - var(--stage-pt) - var(--stage-pb));
+  --scroll-max: 66rem;
+
+  /* spacing scale */
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+  --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem;
+
+  /* type roles, height-aware (fixed chapters are height-bound) */
+  --fs-h-cover: clamp(3.6rem, min(10vw, 14svh), 9rem);
+  --fs-h-chapter: clamp(var(--t-5), min(5.5vw, 9.5svh), var(--t-8));
+  --fs-number: clamp(4.5rem, min(12vw, 18svh), 11rem);
+  --fs-lede: var(--t-1);
 
   /* motion (Emil Kowalski's curves) */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -74,9 +100,19 @@
   color-scheme: light;
 }
 
-/* Olive ground: the arena chapters (Vox register) */
+/* Stacked layout (phones, portrait tablets): controls become a solid bottom bar */
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  :root { --ctl-inset: 8px; --ctl-reserve: 0px; }
+}
+@media (max-width: 599px) {
+  :root { --fs-h-chapter: var(--t-4); --fs-h-cover: clamp(2.8rem, min(13vw, 9svh), 4.5rem); }
+}
+
+/* Olive ground: the arena chapters (Vox register). The bar and controls follow the chapter. */
 .scene--dark,
-[data-ground="ink"] {
+[data-ground="ink"],
+html.is-dark-chapter .chbar,
+html.is-dark-chapter .chctl {
   --bg: var(--olive);
   --bg-2: var(--olive-2);
   --surface: var(--olive-3);
@@ -92,5 +128,6 @@
   --pen: var(--sun);
   --hl: var(--sun);
   --ink-soft-blue: rgba(242, 222, 74, 0.16);
+  --ball: var(--sun);
   color-scheme: dark;
 }

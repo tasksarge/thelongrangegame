@@ -54,7 +54,7 @@ const g7Beat = (b: number) => {
   const d = g7Beats[b];
   g7.kicker.textContent = d.kicker;
   g7.score.textContent = d.score;
-  g7.cap.innerHTML = `<p>${esc(d.cap)}</p>`;
+  g7.cap.innerHTML = `<p class="lede">${esc(d.cap)}</p>`;
   g7.board.set({ home: d.home, away: d.away, clock: d.clock });
   if (b === 1) tween((k) => g7.court.shot({ x: 42, y: 22 }, 16, k));
   else g7.court.shot({ x: 42, y: 22 }, 16, b === 2 ? 1 : 0);
@@ -100,7 +100,7 @@ let nightLive: { destroy(): void } | null = null;
 const nightBeat = (b: number) => {
   const beat = act2.beats[b];
   nightCap.classList.toggle('is-quiet', b === 3);
-  nightCap.innerHTML = `<span class="kicker">${esc(beat.kicker)}</span>${beat.lines.map((l) => `<p>${b === 4 && l.includes('was a three') ? esc(l).replace('a three', '<span class="hl is-on"><span>a three</span></span>') : esc(l)}</p>`).join('')}`;
+  nightCap.innerHTML = `<span class="kicker">${esc(beat.kicker)}</span>${beat.lines.map((l) => `<p class="lede">${b === 4 && l.includes('was a three') ? esc(l).replace('a three', '<span class="hl is-on"><span>a three</span></span>') : esc(l)}</p>`).join('')}`;
   nightBig.textContent = beat.big || '';
   nightLive?.destroy(); nightLive = null; nightGfx.innerHTML = '';
   if (b === 0) { const a = gfx.createArcs(nightGfx, { count: 40 }); nightLive = a; a.play(); }
@@ -181,7 +181,7 @@ const mountEpilogue = () => {
 /* ---------- the engine ---------- */
 const defs: ChapterDef[] = [
   { id: 'cover', label: 'Cover', beats: 1, onEnter: () => armHighlights(cover) },
-  { id: 'game7', label: 'Game 7', beats: 3, dark: true, onEnter: () => { g7.court.play(); if (!g7.arrows) g7.arrows = gfx.createArrows(game7.querySelector('#g7-arrows')!, [{ x: 0.52, y: 0.08 }, { x: 0.97, y: 0.22 }, { x: 0.98, y: 0.95 }, { x: 0.5, y: 0.97 }], { target: { x: 0.74, y: 0.79 }, color: 'chalk', standoff: 0.07 }); g7.arrows.play(); }, onBeat: g7Beat },
+  { id: 'game7', label: 'Game 7', beats: 3, dark: true, onEnter: () => { g7.court.play(); if (!g7.arrows) g7.arrows = gfx.createArrows(game7.querySelector('#g7-arrows')!, [{ x: 0.52, y: 0.08 }, { x: 0.97, y: 0.22 }, { x: 0.98, y: 0.95 }, { x: 0.5, y: 0.97 }], { targetEl: g7.court.hoopEl(), color: 'chalk' }); g7.arrows.play(); }, onBeat: g7Beat },
   { id: 'paper', label: 'The paper', beats: 1, scrolls: true, onEnter: () => { mountPaperFigures(); armHighlights(paper); } },
   { id: 'night', label: 'The night before', beats: act2.beats.length, dark: true, onBeat: nightBeat, onLeave: () => { nightLive?.destroy(); nightLive = null; } },
   { id: 'decade', label: 'Ten years later', beats: decadeBeats.length, onBeat: decadeBeat },

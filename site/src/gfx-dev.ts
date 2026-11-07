@@ -119,6 +119,15 @@ for (const ground of grounds) {
     h.appendChild(dot);
     return createArrows(h, [{ x: 0.05, y: 0.1 }, { x: 0.5, y: 0.04 }, { x: 0.97, y: 0.3 }, { x: 0.9, y: 0.95 }], { target: { x: 0.72, y: 0.5 }, color: ground === 'ink' ? 'chalk' : 'ink' });
   });
+  cell('Arrows to hoop', ground, 'box', (h) => {
+    // The court sits in the right half of the box; the arrows aim at its hoop element, not a fixed fraction.
+    const courtHost = document.createElement('div');
+    courtHost.style.cssText = 'position:absolute;right:4%;top:5%;bottom:5%;aspect-ratio:54/51';
+    h.appendChild(courtHost);
+    const court = createCourt(courtHost, { view: 'half', ground });
+    court.set(1);
+    return createArrows(h, [{ x: 0.06, y: 0.12 }, { x: 0.08, y: 0.9 }, { x: 0.45, y: 0.05 }], { targetEl: court.hoopEl(), color: ground === 'ink' ? 'chalk' : 'ink' });
+  });
   cell('Arrow single', ground, 'box', (h) => createArrow(h, { from: { x: 0.1, y: 0.8 }, to: { x: 0.85, y: 0.25 }, curve: -0.2, color: 'blue' }));
   for (const shape of ['torus', 'sphere', 'cylinder', 'plane'] as const) {
     cell(`Wire ${shape}`, ground, 'center', (h) => createWire(h, { shape }));

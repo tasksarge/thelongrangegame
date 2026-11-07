@@ -134,7 +134,7 @@ export function createEpilogue(container: HTMLElement, a?: LeagueRow[] | ChartOp
     const xy = pts.map((p) => ({ x: p.year, y: p.v }));
     drawSeries(body, linePath(x, y)(xy) ?? '', { area: areaPath(x, y, h)(xy) ?? '', patternId: halftonePattern(svg, patId) });
     const sp = storyPoints(pts);
-    const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), h);
+    const places = placeStoryLabels(sp, (p) => x(p.year), (p) => y(p.v), h, 80, pts);
     for (const { kind, p } of sp) {
       if (kind === 'peak' || kind === 'latest') {
         drawPoint(body, x(p.year), y(p.v));

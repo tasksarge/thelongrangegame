@@ -23,8 +23,15 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; 
 .display { font-family: var(--font-display); font-weight: 800; line-height: 0.9; letter-spacing: -0.02em; text-wrap: balance; }
 .ui { font-family: var(--font-ui); }
 .tnum { font-variant-numeric: tabular-nums; }
-.kicker { font-family: var(--font-ui); font-weight: 700; font-size: var(--t-0); letter-spacing: 0.02em; color: var(--accent); }
-.lede { font-family: var(--font-ui); font-weight: 500; font-size: var(--t-2); line-height: 1.4; max-width: var(--measure); text-wrap: pretty; }
+.kicker { display: block; margin: 0; font-family: var(--font-ui); font-weight: 700; font-size: var(--t-0); letter-spacing: 0.02em; color: var(--accent); }
+/* the one paragraph style that sits next to a headline */
+.lede { margin: 0; font-family: var(--font-ui); font-weight: 500; font-size: var(--fs-lede); line-height: 1.45; max-width: var(--measure); text-wrap: pretty; }
+/* vertical rhythm: stacks own the spacing, their children own none. kicker -> headline is --s-3 everywhere */
+.stack { --gap: var(--s-4); display: grid; align-content: start; justify-items: start; gap: var(--gap); }
+.stack > * { margin: 0; }
+.stack > .kicker { margin-bottom: calc(var(--s-3) - var(--gap)); }
+.h-chapter { margin: 0; font-size: var(--fs-h-chapter); text-transform: uppercase; }
+.h-number { margin: 0; font-size: var(--fs-number); line-height: 0.85; letter-spacing: -0.03em; color: var(--chalk); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .paper-voice { font-family: var(--font-paper); }
 
 /* Flat blocks: no shadows, depth from offset shapes */
@@ -50,11 +57,11 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; 
 .chapter--scrolls { overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .chapter__inner { min-height: 100%; display: grid; }
 
-/* chapter bar */
-.chbar { grid-row: 1; grid-column: 1; z-index: 5; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding-inline: var(--gutter); padding-top: env(safe-area-inset-top, 0px); border-bottom: 2px solid var(--rule); background: var(--bg); color: var(--fg); }
-.chbar__brand { font-family: var(--font-display); font-weight: 800; font-size: var(--t-2); letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; line-height: 1; }
-.chbar__brand span { display: inline-block; margin-left: 0.5em; padding: 0.1em 0.45em; border-radius: 4px; background: var(--ball); color: var(--paper); font-size: 0.6em; vertical-align: 0.2em; letter-spacing: 0; }
-.chbar__list { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 0.25rem; min-width: 0; overflow: hidden; }
+/* chapter bar: brand | list (always centred on the viewport) | beats, on the shared page edge */
+.chbar { grid-row: 1; grid-column: 1; z-index: 5; display: grid; grid-template-columns: minmax(max-content, 1fr) auto minmax(max-content, 1fr); align-items: center; gap: 1rem; padding-inline: var(--page-x); padding-top: env(safe-area-inset-top, 0px); border-bottom: 2px solid var(--rule); background: var(--bg); color: var(--fg); transition: background-color var(--dur-chapter) var(--ease-out), color var(--dur-chapter) var(--ease-out); }
+.chbar__brand { justify-self: start; font-family: var(--font-display); font-weight: 800; font-size: var(--t-2); letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; line-height: 1; }
+.chbar__brand span { display: inline-block; margin-left: 0.5em; padding: 0.1em 0.45em; border-radius: 4px; background: var(--ball); color: var(--accent-ink); font-size: 0.6em; vertical-align: 0.2em; letter-spacing: 0; }
+.chbar__list { list-style: none; margin: 0; padding: 0; display: flex; justify-content: safe center; gap: 0.25rem; min-width: 0; overflow: hidden; }
 .chbar__item { display: inline-flex; align-items: center; gap: 0.5em; padding: 0.45em 0.7em; border-radius: 999px; font-family: var(--font-ui); font-weight: 600; font-size: var(--t-0); color: var(--fg-muted); white-space: nowrap; }
 .chbar__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--rule); flex-shrink: 0; transition: background-color var(--dur-ui) ease, transform var(--dur-ui) var(--ease-out); }
 .chbar__item.is-done .chbar__dot { background: var(--fg-muted); }
@@ -63,21 +70,39 @@ a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; 
 .chbar__beats { display: flex; gap: 5px; justify-self: end; }
 .chbar__beats i { width: 14px; height: 4px; border-radius: 2px; background: var(--rule); }
 .chbar__beats i.on { background: var(--ball); }
+/* 900-1279: label only on the current chapter; 600-899: dots only; under 600: brand and beats */
+@media (max-width: 1279px) {
+  .chbar__item:not([aria-current="true"]) .chbar__label { display: none; }
+  .chbar__item:not([aria-current="true"]) { padding-inline: 0.55em; }
+}
 @media (max-width: 899px) {
-  .chbar { grid-template-columns: 1fr auto; gap: 0.5rem; }
-  .chbar__list { display: none; }
+  .chbar { gap: 0.5rem; }
+  .chbar__label { display: none; }
+  .chbar__item, .chbar__item:not([aria-current="true"]) { padding: 0.45em; }
   .chbar__brand { font-size: var(--t-1); }
 }
+@media (max-width: 599px) {
+  .chbar { grid-template-columns: 1fr auto; }
+  .chbar__list { display: none; }
+}
 
-/* controls */
-.chctl { position: fixed; right: var(--gutter); bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px)); z-index: 6; display: flex; gap: 0.5rem; }
-.chctl__btn { display: inline-flex; align-items: center; gap: 0.4em; height: 48px; min-width: 48px; padding: 0 0.9em; border-radius: 999px; background: var(--fg); color: var(--bg); font-family: var(--font-ui); font-weight: 700; font-size: var(--t-1); }
-.chctl__prev { padding: 0; width: 48px; background: color-mix(in srgb, var(--fg) 12%, transparent); color: var(--fg); }
+/* controls: right edge on the page edge; light chapters blue, dark chapters yellow */
+.chctl { position: fixed; right: var(--page-x); bottom: calc(var(--ctl-inset) + env(safe-area-inset-bottom, 0px)); z-index: 6; display: flex; gap: 0.5rem; }
+.chctl__btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4em; height: var(--ctl-h); min-width: var(--ctl-h); padding: 0 0.9em; border-radius: 999px; font-family: var(--font-ui); font-weight: 700; font-size: var(--t-1); white-space: nowrap; }
+.chctl__prev { padding: 0; width: var(--ctl-h); background: color-mix(in srgb, var(--fg) 12%, var(--bg)); color: var(--fg); }
 .chctl__btn[disabled] { opacity: 0.35; cursor: default; }
 .chctl__next { background: var(--blue); color: var(--paper); }
-.scene--dark ~ .chctl .chctl__next, html.is-dark-chapter .chctl__next { background: var(--sun); color: var(--ink); }
-html.is-dark-chapter .chctl__prev { background: rgba(245, 241, 236, 0.14); color: var(--chalk); }
+html.is-dark-chapter .chctl__next { background: var(--sun); color: var(--ink); }
 @media (hover: hover) and (pointer: fine) { .chctl__btn:not([disabled]):hover { opacity: 0.92; } }
+/* desktop, scrolling chapters: icon-only so the pair stays inside the reserved column */
+@media (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  html.is-scroll-chapter .chctl__nextlabel { display: none; }
+  html.is-scroll-chapter .chctl__next { width: var(--ctl-h); padding: 0; }
+}
+/* stacked layouts: a solid bottom bar that content never runs under */
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) {
+  .chctl { left: 0; right: 0; bottom: 0; justify-content: space-between; padding: var(--ctl-inset) var(--page-x) calc(var(--ctl-inset) + env(safe-area-inset-bottom, 0px)); background: var(--bg); border-top: 2px solid var(--rule); transition: background-color var(--dur-chapter) var(--ease-out); }
+}
 
 /* progress/beat affordance hint */
 .hint { position: absolute; left: var(--gutter); bottom: calc(1.6rem + env(safe-area-inset-bottom, 0px)); font-family: var(--font-ui); font-weight: 600; font-size: var(--t-0); color: var(--fg-muted); display: flex; align-items: center; gap: 0.5em; }
@@ -114,7 +139,18 @@ html.is-dark-chapter .chctl__prev { background: rgba(245, 241, 236, 0.14); color
 .chart-rows th, .chart-rows td { text-align: right; padding: 0.3em 0.7em; border-bottom: 1px solid var(--rule); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .chart-rows th:first-child, .chart-rows td:first-child { text-align: left; }
 
-/* Range input */
-input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--rule); }
-input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--ball); border: 3px solid var(--bg); cursor: ew-resize; }
-input[type="range"]::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--ball); border: 3px solid var(--bg); cursor: ew-resize; }
+/* Range input: a 6px track inside a tall hit area */
+input[type="range"] { --thumb: 24px; -webkit-appearance: none; appearance: none; width: 100%; height: 32px; margin: 0; background: transparent; cursor: ew-resize; }
+input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: var(--rule); }
+input[type="range"]::-moz-range-track { height: 6px; border-radius: 3px; background: var(--rule); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: var(--thumb); height: var(--thumb); margin-top: calc(3px - var(--thumb) / 2); border-radius: 50%; background: var(--ball); border: 3px solid var(--bg); }
+input[type="range"]::-moz-range-thumb { width: var(--thumb); height: var(--thumb); border-radius: 50%; background: var(--ball); border: 3px solid var(--bg); }
+
+/* Tap targets on touch and narrow screens: 44px minimum */
+@media (max-width: 899px), (pointer: coarse) {
+  .chip, .toggle button, .chart-data, .data-notes summary { min-height: 44px; display: inline-flex; align-items: center; }
+  .toggle { padding: 0; }
+  input[type="range"] { --thumb: 28px; height: 44px; }
+  .quote a, .footer a, .claim__evidence a { display: inline-block; padding-block: 0.7rem; }
+}
+@media (max-width: 399px) { .chart .chart-title { font-size: var(--t-3); } }

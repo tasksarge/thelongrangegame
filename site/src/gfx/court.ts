@@ -23,6 +23,10 @@ export interface CourtHandle extends GfxHandle {
   zones(values: ZoneShares): void;
   shot(from: CourtPoint, apex: number, t: number): void;
   clearShot(): void;
+  /** The near hoop's ring element (also marked `data-hoop`), e.g. as `targetEl` for createArrows. */
+  hoopEl(): SVGPathElement;
+  /** The near hoop ring's bounding rect in viewport px. */
+  hoopRect(): DOMRect;
 }
 
 const HOOP_X = 25, HOOP_Y = 5.25, R3 = 23.75, CORNER_X = 3, MARGIN = 2, BALL_R = 1.1;
@@ -79,8 +83,10 @@ export function createCourt(container: HTMLElement, opts: CourtOpts = {}): Court
     { d: circ(HOOP_X, HOOP_Y, 0.75), from: 0.5, to: 0.65, cls: 'gfx-court__hoop' },
     { d: INSIDE3.slice(0, -1), from: 0.45, to: 0.9 },
   ];
+  let hoop: SVGPathElement | null = null;
   const addLine = (parent: SVGElement, line: Line): void => {
     const p = svgEl('path', { class: line.cls ?? 'gfx-court__line', d: line.d, pathLength: 1 }, parent);
+    if (line.cls === 'gfx-court__hoop' && !hoop) { hoop = p; p.setAttribute('data-hoop', ''); }
     lineEls.push({ el: p, from: line.from, to: line.to });
   };
   const buildHalf = (parent: SVGElement): void => {
@@ -181,6 +187,8 @@ export function createCourt(container: HTMLElement, opts: CourtOpts = {}): Court
     zones,
     shot,
     clearShot,
+    hoopEl: () => hoop!,
+    hoopRect: () => hoop!.getBoundingClientRect(),
     destroy: () => { player.destroy(); cancelZones(); ro?.disconnect(); el.remove(); },
   };
 }

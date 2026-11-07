@@ -233,7 +233,8 @@ export function createFig2(container: HTMLElement, a?: ShotBucketRow[] | ChartOp
       // columns: season | 8–16 strip | 24+ strip
       const grid = document.createElement('div');
       grid.className = `heat heat-then${narrowNow ? ' heat--compact' : ''}`;
-      grid.style.gridTemplateColumns = 'auto 1fr 1fr';
+      // minmax(0, 1fr): the strip columns must never grow past the body width because of a long title or legend note
+      grid.style.gridTemplateColumns = 'auto minmax(0, 1fr) minmax(0, 1fr)';
       const strips = bucketsShown();
       // Then rows are 22px tall: dots run 2px → 18px across each strip's own range (as the paper's two legends did)
       const dotMax = 18;
@@ -243,10 +244,12 @@ export function createFig2(container: HTMLElement, a?: ShotBucketRow[] | ChartOp
       });
       const blank = () => document.createElement('div');
       grid.appendChild(blank());
+      // below 560px the long titles (~190px, nowrap) overflow a half-width column; use one short label per column
+      const shortTitles = frame.width() < 560;
       strips.forEach((b) => {
         const t = document.createElement('p');
         t.className = 'heat-strip-title';
-        t.textContent = b.key === '8_16' ? 'Midrange · 8–16 ft usage %' : 'Three · 24+ ft usage %';
+        t.textContent = shortTitles ? (b.key === '8_16' ? '8–16 ft' : '24+ ft') : b.key === '8_16' ? 'Midrange · 8–16 ft usage %' : 'Three · 24+ ft usage %';
         grid.appendChild(t);
       });
       ss.forEach((s, r) => {
@@ -271,14 +274,17 @@ export function createFig2(container: HTMLElement, a?: ShotBucketRow[] | ChartOp
       return;
     }
 
-    // Now: rows = buckets, columns = seasons, one scale
-    const n = ss.length;
+    // Now: rows = buckets, columns = seasons, one scale.
+    // Under 500px thirty columns are unreadable, so show every third season (always including the latest).
+    const thinned = frame.width() < 500;
+    const shown = thinned ? ss.filter((_, i) => i % 3 === 0 || i === ss.length - 1) : ss;
+    const n = shown.length;
     const grid = document.createElement('div');
     grid.className = `heat heat-now${narrowNow ? ' heat--compact' : ''}`;
     grid.style.gridTemplateColumns = `auto repeat(${n}, minmax(0, 1fr))`;
     const vmax = d3.max(rows.filter((r) => ss.includes(r.season)), (r) => r.usage_pct) ?? 50;
-    // one scale for all four strips: 0 → 2px, max → the largest dot the cell can hold (spec: 0 → 1px radius, 45% → 9px)
-    const rowH = narrowNow ? 26 : 34;
+    // one scale for all four strips: 0 → 2px, max → the largest dot the column pitch can hold
+    const rowH = narrowNow ? 28 : 34;
     const colW = Math.max(8, (frame.width() - 70 - 4 * n) / n);
     const dotMax = Math.max(6, Math.min(18, Math.floor(Math.min(rowH, colW)) - 6));
     const scale = d3.scaleLinear().domain([0, vmax]).range([2, dotMax]);
@@ -287,23 +293,29 @@ export function createFig2(container: HTMLElement, a?: ShotBucketRow[] | ChartOp
       lab.className = 'heat-row-label';
       lab.textContent = b.label;
       grid.appendChild(lab);
-      ss.forEach((s, c) => {
+      shown.forEach((s, c) => {
         const cell = makeCell(s, b, r, c, (v) => scale(v));
         cell.style.minHeight = `${rowH}px`;
         grid.appendChild(cell);
       });
     });
-    // season axis: label every k-th column so labels never collide
+    // season axis: when thinned every shown column is labeled; otherwise every k-th so labels never collide
     grid.appendChild(document.createElement('div'));
-    const step = Math.max(1, Math.ceil(30 / (colW + 4)));
-    ss.forEach((s, c) => {
+    const step = thinned ? 1 : Math.max(1, Math.ceil(30 / (colW + 4)));
+    shown.forEach((s, c) => {
       const lab = document.createElement('div');
       lab.className = 'heat-col-label';
       const y = endYear(s);
       if (c % step === 0 || c === n - 1) lab.textContent = yy(y);
-      if (c === n - 1 && (n - 1) % step !== 0 && ((n - 1) % step) * colW < 24) lab.textContent = '';
+      if (!thinned && c === n - 1 && (n - 1) % step !== 0 && ((n - 1) % step) * colW < 24) lab.textContent = '';
       grid.appendChild(lab);
     });
+    if (thinned) {
+      const note = document.createElement('p');
+      note.className = 'heat-note';
+      note.textContent = `Every third season shown (${n} of ${ss.length}); the Data table lists all ${ss.length}.`;
+      grid.appendChild(note);
+    }
     body.append(grid, legend(dotMax, '0%', fmtPct1(vmax)), tip);
   }
 

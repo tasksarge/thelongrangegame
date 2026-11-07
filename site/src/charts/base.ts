@@ -179,7 +179,8 @@ export class Frame {
       this.body.appendChild(this.svgEl);
     }
     const s = d3.select(this.svgEl);
-    s.attr('viewBox', `0 0 ${W} ${H}`).attr('aria-label', alt);
+    // xMidYMid meet: when a container caps the height, the drawing scales down and centres, never distorts
+    s.attr('viewBox', `0 0 ${W} ${H}`).attr('preserveAspectRatio', 'xMidYMid meet').attr('aria-label', alt);
     s.selectAll('*').remove();
     return s;
   }
@@ -383,7 +384,8 @@ export interface CalloutOpts {
 /** Hand-annotated callout: a slightly curved 2px leader with an open arrowhead at the point, ending in a yellow box. */
 export function drawCallout(g: G, px: number, py: number, text: string, opts: CalloutOpts): void {
   const bw = boxWidth(text);
-  const over = opts.overhang ?? 40;
+  // keep 10px between the box and the panel frame drawn at the SVG edge
+  const over = Math.max(0, (opts.overhang ?? 40) - 10);
   const lead = 26;
   const c = g.append('g').attr('class', 'callout');
   const fits: Record<CalloutPlace, boolean> = {
@@ -476,7 +478,8 @@ export function drawStoryPoint(g: G, px: number, py: number, w: number, label: P
   const pt = g.append('g').attr('class', 'story-point');
   drawPoint(pt, px, py);
   const anchor = label.anchor ?? (px > w - 70 ? 'end' : px < 70 ? 'start' : 'middle');
-  const dx = anchor === 'end' ? -10 : anchor === 'start' ? 10 : 0;
+  // 14px keeps the halo clear of the point ring and of a dashed rule drawn through the point
+  const dx = anchor === 'end' ? -14 : anchor === 'start' ? 14 : 0;
   const above = (label.place ?? 'above') === 'above';
   const y1 = above ? py - 12 : py + 25;
   pt.append('text').attr('class', 'pt-label').attr('x', px + dx).attr('y', y1).attr('text-anchor', anchor).text(label.text);
@@ -581,11 +584,18 @@ export function placeStoryLabels<T extends { year: number; v: number }>(
   py: (p: T) => number,
   h: number,
   gap = 80,
+  /** The whole series, so the first label can sit on the side the line does not go. */
+  series?: T[],
 ): Map<number, 'above' | 'below'> {
   const out = new Map<number, 'above' | 'below'>();
   const peak = pts.find((s) => s.kind === 'peak');
   const latest = pts.find((s) => s.kind === 'latest');
-  for (const s of pts) out.set(s.p.year, s.kind === 'first' ? 'above' : s.kind === 'paper' ? 'below' : 'above');
+  // first point: the label runs to the right, so put it on the opposite side of where the line heads,
+  // unless the point sits so low that a two-line label below would run into the axis
+  const first = pts.find((s) => s.kind === 'first');
+  const roomBelow = !first || py(first.p) < h - 44;
+  const firstBelow = roomBelow && !!series && series.length > 1 && series[1].v > series[0].v;
+  for (const s of pts) out.set(s.p.year, s.kind === 'first' ? (firstBelow ? 'below' : 'above') : s.kind === 'paper' ? 'below' : 'above');
   if (peak && latest && Math.abs(px(peak.p) - px(latest.p)) < gap) {
     // put the latest label on the side with more room
     out.set(latest.p.year, py(latest.p) > h * 0.5 ? 'above' : 'below');
