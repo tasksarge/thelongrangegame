@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gfx dev — The Long Range Game, Revisited</title>
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-data); -webkit-font-smoothing: antialiased; }
+      .dev-head { padding: 24px 16px 0; }
+      .dev-head h1 { margin: 0; font: 800 28px/1 var(--font-display); letter-spacing: -0.02em; }
+      .dev-head p { margin: 6px 0 0; font: 500 13px/1.5 var(--font-data); color: var(--fg-muted); }
+      .dev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 32px 24px; padding: 24px 16px 64px; }
+      .dev-cell { padding: 16px; background: var(--bg); color: var(--fg); min-width: 0; box-shadow: inset 0 0 0 2px var(--mist); border-radius: 8px; }
+      .dev-cell[data-ground="ink"] { box-shadow: inset 0 0 0 2px var(--grey-2); }
+      .dev-cell h2 { margin: 0 0 8px; font: 700 12px/1.4 var(--font-data); text-transform: uppercase; letter-spacing: .1em; color: var(--fg-muted); }
+      .dev-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 0 0 12px; }
+      .dev-tools button { font: 700 11px/1.4 var(--font-data); text-transform: uppercase; letter-spacing: .06em; padding: 4px 10px; border: 2px solid var(--fg); border-radius: 999px; background: var(--bg); color: var(--fg); cursor: pointer; }
+      .dev-tools button:active { transform: scale(.97); }
+      .dev-tools input[type="range"] { width: 150px; vertical-align: middle; accent-color: var(--ball); }
+      .dev-tools output { font: 600 11px/1 var(--font-data); font-variant-numeric: tabular-nums; min-width: 3ch; }
+      .dev-host { min-width: 0; }
+      .dev-host--box { position: relative; height: 240px; overflow: hidden; background: var(--bg-2); border-radius: 8px; }
+      .dev-host--center { display: flex; justify-content: center; }
+    </style>
+  </head>
+  <body>
+    <div class="dev-head">
+      <h1>Gfx dev page</h1>
+      <p>Every src/gfx module on paper and on ink. The slider drives set(progress); Play runs it with the ease-out curve.</p>
+    </div>
+    <main id="dev" class="dev-grid"></main>
+    <script type="module" src="/src/gfx-dev.ts"></script>
+  </body>
+</html>

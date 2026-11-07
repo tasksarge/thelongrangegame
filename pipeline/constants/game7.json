@@ -1,0 +1,82 @@
+{
+  "_note": "Hand-entered facts for the Game 7 scene (PRD Appendix A3). Not pulled by the pipeline. url_verified means the URL returned HTTP 200 on 2026-11-07; url_is_homepage means a publication home page stands in for the specific article named in PRD Appendix C.",
+  "game": {
+    "date": "2016-06-19",
+    "venue": "Oracle Arena, Oakland",
+    "series": "2016 NBA Finals, Game 7, series tied 3-3",
+    "final": {"cleveland": 93, "golden_state": 89},
+    "first_team_to_win_finals_from_3_1_down": true,
+    "tied_89_89_clock": "0:53",
+    "warriors_scoreless_final": "4:39",
+    "season_context": {
+      "record": "73-9",
+      "curry_unanimous_mvp": true,
+      "curry_threes": 402,
+      "team_3pa_per_game": 31.6,
+      "team_3p_pct": 41.6
+    }
+  },
+  "entries": [
+    {
+      "id": "final_score",
+      "fact": "Final: Cleveland 93, Golden State 89. Cleveland became the first team to win the Finals from 3-1 down.",
+      "source": "Basketball-Reference box score, 2016 NBA Finals Game 7",
+      "source_url": "https://www.basketball-reference.com/boxscores/201606190GSW.html",
+      "url_verified": true
+    },
+    {
+      "id": "irving_three",
+      "fact": "Kyrie Irving: 26 points; the go-ahead 25-foot three over Curry with 53 seconds left, score tied 89-89.",
+      "source": "NBA.com: Top Finals moments, Irving's three (Appendix C)",
+      "source_url": "https://www.nba.com/",
+      "url_verified": false,
+      "url_is_homepage": true
+    },
+    {
+      "id": "james_block",
+      "fact": "LeBron James: triple-double; the chase-down block on Andre Iguodala with about 1:50 left.",
+      "source": "Bleacher Report: Game 7 recap (Appendix C)",
+      "source_url": "https://bleacherreport.com/nba",
+      "url_verified": true,
+      "url_is_homepage": true
+    },
+    {
+      "id": "curry_line",
+      "fact": "Stephen Curry: 17 points, 6 of 19 from the field, 4 of 14 from three.",
+      "source": "Land of Basketball: Game 7 box score (Appendix C)",
+      "source_url": "https://www.landofbasketball.com/",
+      "url_verified": false,
+      "url_is_homepage": true
+    },
+    {
+      "id": "thompson_line",
+      "fact": "Klay Thompson: 14 points, 2 of 10 from three.",
+      "source": "Land of Basketball: Game 7 box score (Appendix C)",
+      "source_url": "https://www.landofbasketball.com/",
+      "url_verified": false,
+      "url_is_homepage": true
+    },
+    {
+      "id": "green_line",
+      "fact": "Draymond Green: 32 points, 15 rebounds, 9 assists.",
+      "source": "Basketball-Reference box score, 2016 NBA Finals Game 7",
+      "source_url": "https://www.basketball-reference.com/boxscores/201606190GSW.html",
+      "url_verified": true
+    },
+    {
+      "id": "scoreless_439",
+      "fact": "Golden State scored no points over the final 4:39; 89-89 tie; 93-89 final.",
+      "source": "Fox News: Irving's three clinches the title (Appendix C)",
+      "source_url": "https://www.foxnews.com/sports",
+      "url_verified": true,
+      "url_is_homepage": true
+    },
+    {
+      "id": "season_context",
+      "fact": "73-9; Curry the first unanimous MVP; 402 threes; team 31.6 three-point attempts per game at 41.6%.",
+      "source": "Wikipedia: Three-point revolution; 2015-16 Golden State Warriors season",
+      "source_url": "https://en.wikipedia.org/wiki/2015%E2%80%9316_Golden_State_Warriors_season",
+      "url_verified": true
+    }
+  ]
+}

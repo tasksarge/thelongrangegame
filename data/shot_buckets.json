@@ -1,0 +1,1502 @@
+[
+ {
+  "season": "1996-97",
+  "bucket": "lt8",
+  "fga": 85008,
+  "fgm": 44958,
+  "usage_pct": 45.076,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1996-97&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:16Z"
+ },
+ {
+  "season": "1996-97",
+  "bucket": "8_16",
+  "fga": 36075,
+  "fgm": 14513,
+  "usage_pct": 19.129,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1996-97&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:16Z"
+ },
+ {
+  "season": "1996-97",
+  "bucket": "16_24",
+  "fga": 47166,
+  "fgm": 19186,
+  "usage_pct": 25.01,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1996-97&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:16Z"
+ },
+ {
+  "season": "1996-97",
+  "bucket": "24plus",
+  "fga": 20048,
+  "fgm": 7106,
+  "usage_pct": 10.631,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1996-97&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:16Z"
+ },
+ {
+  "season": "1996-97",
+  "bucket": "backcourt",
+  "fga": 292,
+  "fgm": 11,
+  "usage_pct": 0.155,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1996-97&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:16Z"
+ },
+ {
+  "season": "1997-98",
+  "bucket": "lt8",
+  "fga": 81445,
+  "fgm": 44649,
+  "usage_pct": 42.971,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1997-98&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:49Z"
+ },
+ {
+  "season": "1997-98",
+  "bucket": "8_16",
+  "fga": 38958,
+  "fgm": 14509,
+  "usage_pct": 20.554,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1997-98&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:49Z"
+ },
+ {
+  "season": "1997-98",
+  "bucket": "16_24",
+  "fga": 39218,
+  "fgm": 15893,
+  "usage_pct": 20.692,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1997-98&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:49Z"
+ },
+ {
+  "season": "1997-98",
+  "bucket": "24plus",
+  "fga": 29578,
+  "fgm": 10320,
+  "usage_pct": 15.605,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1997-98&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:49Z"
+ },
+ {
+  "season": "1997-98",
+  "bucket": "backcourt",
+  "fga": 337,
+  "fgm": 12,
+  "usage_pct": 0.178,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1997-98&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:39:49Z"
+ },
+ {
+  "season": "1998-99",
+  "bucket": "lt8",
+  "fga": 47182,
+  "fgm": 25188,
+  "usage_pct": 41.615,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1998-99&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:19Z"
+ },
+ {
+  "season": "1998-99",
+  "bucket": "8_16",
+  "fga": 22766,
+  "fgm": 8353,
+  "usage_pct": 20.08,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1998-99&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:19Z"
+ },
+ {
+  "season": "1998-99",
+  "bucket": "16_24",
+  "fga": 24390,
+  "fgm": 9569,
+  "usage_pct": 21.512,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1998-99&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:19Z"
+ },
+ {
+  "season": "1998-99",
+  "bucket": "24plus",
+  "fga": 18820,
+  "fgm": 6433,
+  "usage_pct": 16.599,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1998-99&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:19Z"
+ },
+ {
+  "season": "1998-99",
+  "bucket": "backcourt",
+  "fga": 219,
+  "fgm": 6,
+  "usage_pct": 0.193,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1998-99&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:19Z"
+ },
+ {
+  "season": "1999-00",
+  "bucket": "lt8",
+  "fga": 79353,
+  "fgm": 43176,
+  "usage_pct": 40.648,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1999-00&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:45Z"
+ },
+ {
+  "season": "1999-00",
+  "bucket": "8_16",
+  "fga": 40272,
+  "fgm": 15369,
+  "usage_pct": 20.629,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1999-00&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:45Z"
+ },
+ {
+  "season": "1999-00",
+  "bucket": "16_24",
+  "fga": 43107,
+  "fgm": 17581,
+  "usage_pct": 22.081,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1999-00&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:45Z"
+ },
+ {
+  "season": "1999-00",
+  "bucket": "24plus",
+  "fga": 32119,
+  "fgm": 11452,
+  "usage_pct": 16.453,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1999-00&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:45Z"
+ },
+ {
+  "season": "1999-00",
+  "bucket": "backcourt",
+  "fga": 369,
+  "fgm": 13,
+  "usage_pct": 0.189,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=1999-00&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:40:45Z"
+ },
+ {
+  "season": "2000-01",
+  "bucket": "lt8",
+  "fga": 76262,
+  "fgm": 40923,
+  "usage_pct": 39.79,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2000-01&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:10Z"
+ },
+ {
+  "season": "2000-01",
+  "bucket": "8_16",
+  "fga": 38422,
+  "fgm": 14652,
+  "usage_pct": 20.047,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2000-01&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:10Z"
+ },
+ {
+  "season": "2000-01",
+  "bucket": "16_24",
+  "fga": 44413,
+  "fgm": 17784,
+  "usage_pct": 23.173,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2000-01&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:10Z"
+ },
+ {
+  "season": "2000-01",
+  "bucket": "24plus",
+  "fga": 32151,
+  "fgm": 11487,
+  "usage_pct": 16.775,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2000-01&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:10Z"
+ },
+ {
+  "season": "2000-01",
+  "bucket": "backcourt",
+  "fga": 414,
+  "fgm": 18,
+  "usage_pct": 0.216,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2000-01&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:10Z"
+ },
+ {
+  "season": "2001-02",
+  "bucket": "lt8",
+  "fga": 76416,
+  "fgm": 41533,
+  "usage_pct": 39.542,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2001-02&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:34Z"
+ },
+ {
+  "season": "2001-02",
+  "bucket": "8_16",
+  "fga": 37280,
+  "fgm": 14413,
+  "usage_pct": 19.291,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2001-02&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:34Z"
+ },
+ {
+  "season": "2001-02",
+  "bucket": "16_24",
+  "fga": 44546,
+  "fgm": 17688,
+  "usage_pct": 23.051,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2001-02&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:34Z"
+ },
+ {
+  "season": "2001-02",
+  "bucket": "24plus",
+  "fga": 34594,
+  "fgm": 12357,
+  "usage_pct": 17.901,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2001-02&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:34Z"
+ },
+ {
+  "season": "2001-02",
+  "bucket": "backcourt",
+  "fga": 415,
+  "fgm": 13,
+  "usage_pct": 0.215,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2001-02&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:34Z"
+ },
+ {
+  "season": "2002-03",
+  "bucket": "lt8",
+  "fga": 76106,
+  "fgm": 41290,
+  "usage_pct": 39.616,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2002-03&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:59Z"
+ },
+ {
+  "season": "2002-03",
+  "bucket": "8_16",
+  "fga": 35727,
+  "fgm": 13781,
+  "usage_pct": 18.597,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2002-03&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:59Z"
+ },
+ {
+  "season": "2002-03",
+  "bucket": "16_24",
+  "fga": 45429,
+  "fgm": 17695,
+  "usage_pct": 23.648,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2002-03&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:59Z"
+ },
+ {
+  "season": "2002-03",
+  "bucket": "24plus",
+  "fga": 34389,
+  "fgm": 12160,
+  "usage_pct": 17.901,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2002-03&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:59Z"
+ },
+ {
+  "season": "2002-03",
+  "bucket": "backcourt",
+  "fga": 458,
+  "fgm": 11,
+  "usage_pct": 0.238,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2002-03&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:41:59Z"
+ },
+ {
+  "season": "2003-04",
+  "bucket": "lt8",
+  "fga": 76917,
+  "fgm": 41270,
+  "usage_pct": 40.525,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2003-04&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:21Z"
+ },
+ {
+  "season": "2003-04",
+  "bucket": "8_16",
+  "fga": 33990,
+  "fgm": 12813,
+  "usage_pct": 17.908,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2003-04&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:21Z"
+ },
+ {
+  "season": "2003-04",
+  "bucket": "16_24",
+  "fga": 43443,
+  "fgm": 16860,
+  "usage_pct": 22.888,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2003-04&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:21Z"
+ },
+ {
+  "season": "2003-04",
+  "bucket": "24plus",
+  "fga": 35008,
+  "fgm": 12299,
+  "usage_pct": 18.444,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2003-04&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:21Z"
+ },
+ {
+  "season": "2003-04",
+  "bucket": "backcourt",
+  "fga": 445,
+  "fgm": 13,
+  "usage_pct": 0.234,
+  "teams": 29,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2003-04&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:21Z"
+ },
+ {
+  "season": "2004-05",
+  "bucket": "lt8",
+  "fga": 79866,
+  "fgm": 43610,
+  "usage_pct": 40.413,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2004-05&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:57Z"
+ },
+ {
+  "season": "2004-05",
+  "bucket": "8_16",
+  "fga": 32431,
+  "fgm": 12409,
+  "usage_pct": 16.41,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2004-05&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:57Z"
+ },
+ {
+  "season": "2004-05",
+  "bucket": "16_24",
+  "fga": 46658,
+  "fgm": 18671,
+  "usage_pct": 23.609,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2004-05&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:57Z"
+ },
+ {
+  "season": "2004-05",
+  "bucket": "24plus",
+  "fga": 38193,
+  "fgm": 13740,
+  "usage_pct": 19.326,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2004-05&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:57Z"
+ },
+ {
+  "season": "2004-05",
+  "bucket": "backcourt",
+  "fga": 478,
+  "fgm": 5,
+  "usage_pct": 0.242,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2004-05&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:42:57Z"
+ },
+ {
+  "season": "2005-06",
+  "bucket": "lt8",
+  "fga": 79616,
+  "fgm": 44007,
+  "usage_pct": 40.973,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2005-06&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:24Z"
+ },
+ {
+  "season": "2005-06",
+  "bucket": "8_16",
+  "fga": 29477,
+  "fgm": 11501,
+  "usage_pct": 15.17,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2005-06&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:24Z"
+ },
+ {
+  "season": "2005-06",
+  "bucket": "16_24",
+  "fga": 45957,
+  "fgm": 18590,
+  "usage_pct": 23.651,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2005-06&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:24Z"
+ },
+ {
+  "season": "2005-06",
+  "bucket": "24plus",
+  "fga": 38783,
+  "fgm": 14056,
+  "usage_pct": 19.959,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2005-06&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:24Z"
+ },
+ {
+  "season": "2005-06",
+  "bucket": "backcourt",
+  "fga": 481,
+  "fgm": 12,
+  "usage_pct": 0.248,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2005-06&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:24Z"
+ },
+ {
+  "season": "2006-07",
+  "bucket": "lt8",
+  "fga": 80716,
+  "fgm": 45407,
+  "usage_pct": 41.167,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2006-07&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:51Z"
+ },
+ {
+  "season": "2006-07",
+  "bucket": "8_16",
+  "fga": 28731,
+  "fgm": 11379,
+  "usage_pct": 14.653,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2006-07&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:51Z"
+ },
+ {
+  "season": "2006-07",
+  "bucket": "16_24",
+  "fga": 45017,
+  "fgm": 18170,
+  "usage_pct": 22.959,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2006-07&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:51Z"
+ },
+ {
+  "season": "2006-07",
+  "bucket": "24plus",
+  "fga": 41107,
+  "fgm": 14892,
+  "usage_pct": 20.965,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2006-07&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:51Z"
+ },
+ {
+  "season": "2006-07",
+  "bucket": "backcourt",
+  "fga": 501,
+  "fgm": 12,
+  "usage_pct": 0.256,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2006-07&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:43:51Z"
+ },
+ {
+  "season": "2007-08",
+  "bucket": "lt8",
+  "fga": 79134,
+  "fgm": 44666,
+  "usage_pct": 39.468,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2007-08&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:16Z"
+ },
+ {
+  "season": "2007-08",
+  "bucket": "8_16",
+  "fga": 29779,
+  "fgm": 11647,
+  "usage_pct": 14.852,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2007-08&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:16Z"
+ },
+ {
+  "season": "2007-08",
+  "bucket": "16_24",
+  "fga": 47117,
+  "fgm": 19256,
+  "usage_pct": 23.5,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2007-08&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:16Z"
+ },
+ {
+  "season": "2007-08",
+  "bucket": "24plus",
+  "fga": 43874,
+  "fgm": 16087,
+  "usage_pct": 21.882,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2007-08&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:16Z"
+ },
+ {
+  "season": "2007-08",
+  "bucket": "backcourt",
+  "fga": 597,
+  "fgm": 13,
+  "usage_pct": 0.298,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2007-08&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:16Z"
+ },
+ {
+  "season": "2008-09",
+  "bucket": "lt8",
+  "fga": 80050,
+  "fgm": 45073,
+  "usage_pct": 40.22,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2008-09&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:41Z"
+ },
+ {
+  "season": "2008-09",
+  "bucket": "8_16",
+  "fga": 29364,
+  "fgm": 11539,
+  "usage_pct": 14.754,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2008-09&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:41Z"
+ },
+ {
+  "season": "2008-09",
+  "bucket": "16_24",
+  "fga": 45142,
+  "fgm": 18370,
+  "usage_pct": 22.681,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2008-09&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:41Z"
+ },
+ {
+  "season": "2008-09",
+  "bucket": "24plus",
+  "fga": 43917,
+  "fgm": 16306,
+  "usage_pct": 22.066,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2008-09&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:41Z"
+ },
+ {
+  "season": "2008-09",
+  "bucket": "backcourt",
+  "fga": 557,
+  "fgm": 14,
+  "usage_pct": 0.28,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2008-09&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:44:41Z"
+ },
+ {
+  "season": "2009-10",
+  "bucket": "lt8",
+  "fga": 82651,
+  "fgm": 47314,
+  "usage_pct": 41.127,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2009-10&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:12Z"
+ },
+ {
+  "season": "2009-10",
+  "bucket": "8_16",
+  "fga": 29967,
+  "fgm": 12002,
+  "usage_pct": 14.911,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2009-10&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:12Z"
+ },
+ {
+  "season": "2009-10",
+  "bucket": "16_24",
+  "fga": 43739,
+  "fgm": 17591,
+  "usage_pct": 21.764,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2009-10&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:12Z"
+ },
+ {
+  "season": "2009-10",
+  "bucket": "24plus",
+  "fga": 44043,
+  "fgm": 15795,
+  "usage_pct": 21.916,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2009-10&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:12Z"
+ },
+ {
+  "season": "2009-10",
+  "bucket": "backcourt",
+  "fga": 566,
+  "fgm": 18,
+  "usage_pct": 0.282,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2009-10&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:12Z"
+ },
+ {
+  "season": "2010-11",
+  "bucket": "lt8",
+  "fga": 83269,
+  "fgm": 46837,
+  "usage_pct": 41.684,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2010-11&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:37Z"
+ },
+ {
+  "season": "2010-11",
+  "bucket": "8_16",
+  "fga": 29504,
+  "fgm": 11690,
+  "usage_pct": 14.77,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2010-11&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:37Z"
+ },
+ {
+  "season": "2010-11",
+  "bucket": "16_24",
+  "fga": 42688,
+  "fgm": 17206,
+  "usage_pct": 21.37,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2010-11&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:37Z"
+ },
+ {
+  "season": "2010-11",
+  "bucket": "24plus",
+  "fga": 43744,
+  "fgm": 15862,
+  "usage_pct": 21.898,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2010-11&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:37Z"
+ },
+ {
+  "season": "2010-11",
+  "bucket": "backcourt",
+  "fga": 556,
+  "fgm": 18,
+  "usage_pct": 0.278,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2010-11&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:45:37Z"
+ },
+ {
+  "season": "2011-12",
+  "bucket": "lt8",
+  "fga": 67741,
+  "fgm": 37367,
+  "usage_pct": 42.022,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2011-12&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:00Z"
+ },
+ {
+  "season": "2011-12",
+  "bucket": "8_16",
+  "fga": 23532,
+  "fgm": 9146,
+  "usage_pct": 14.598,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2011-12&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:00Z"
+ },
+ {
+  "season": "2011-12",
+  "bucket": "16_24",
+  "fga": 33552,
+  "fgm": 13011,
+  "usage_pct": 20.813,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2011-12&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:00Z"
+ },
+ {
+  "season": "2011-12",
+  "bucket": "24plus",
+  "fga": 36016,
+  "fgm": 12672,
+  "usage_pct": 22.342,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2011-12&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:00Z"
+ },
+ {
+  "season": "2011-12",
+  "bucket": "backcourt",
+  "fga": 364,
+  "fgm": 11,
+  "usage_pct": 0.226,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2011-12&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:00Z"
+ },
+ {
+  "season": "2012-13",
+  "bucket": "lt8",
+  "fga": 85193,
+  "fgm": 47153,
+  "usage_pct": 42.263,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2012-13&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:29Z"
+ },
+ {
+  "season": "2012-13",
+  "bucket": "8_16",
+  "fga": 28448,
+  "fgm": 11238,
+  "usage_pct": 14.113,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2012-13&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:29Z"
+ },
+ {
+  "season": "2012-13",
+  "bucket": "16_24",
+  "fga": 38889,
+  "fgm": 15284,
+  "usage_pct": 19.292,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2012-13&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:29Z"
+ },
+ {
+  "season": "2012-13",
+  "bucket": "24plus",
+  "fga": 48563,
+  "fgm": 17590,
+  "usage_pct": 24.091,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2012-13&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:29Z"
+ },
+ {
+  "season": "2012-13",
+  "bucket": "backcourt",
+  "fga": 486,
+  "fgm": 10,
+  "usage_pct": 0.241,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2012-13&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:29Z"
+ },
+ {
+  "season": "2013-14",
+  "bucket": "lt8",
+  "fga": 86165,
+  "fgm": 47969,
+  "usage_pct": 42.212,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2013-14&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:51Z"
+ },
+ {
+  "season": "2013-14",
+  "bucket": "8_16",
+  "fga": 28243,
+  "fgm": 11244,
+  "usage_pct": 13.836,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2013-14&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:51Z"
+ },
+ {
+  "season": "2013-14",
+  "bucket": "16_24",
+  "fga": 36779,
+  "fgm": 14512,
+  "usage_pct": 18.018,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2013-14&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:51Z"
+ },
+ {
+  "season": "2013-14",
+  "bucket": "24plus",
+  "fga": 52431,
+  "fgm": 19021,
+  "usage_pct": 25.686,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2013-14&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:51Z"
+ },
+ {
+  "season": "2013-14",
+  "bucket": "backcourt",
+  "fga": 508,
+  "fgm": 20,
+  "usage_pct": 0.249,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2013-14&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:46:51Z"
+ },
+ {
+  "season": "2014-15",
+  "bucket": "lt8",
+  "fga": 86330,
+  "fgm": 47428,
+  "usage_pct": 42.0,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2014-15&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:15Z"
+ },
+ {
+  "season": "2014-15",
+  "bucket": "8_16",
+  "fga": 28136,
+  "fgm": 11376,
+  "usage_pct": 13.688,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2014-15&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:15Z"
+ },
+ {
+  "season": "2014-15",
+  "bucket": "16_24",
+  "fga": 35961,
+  "fgm": 14181,
+  "usage_pct": 17.495,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2014-15&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:15Z"
+ },
+ {
+  "season": "2014-15",
+  "bucket": "24plus",
+  "fga": 54641,
+  "fgm": 19281,
+  "usage_pct": 26.583,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2014-15&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:15Z"
+ },
+ {
+  "season": "2014-15",
+  "bucket": "backcourt",
+  "fga": 482,
+  "fgm": 13,
+  "usage_pct": 0.234,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2014-15&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:15Z"
+ },
+ {
+  "season": "2015-16",
+  "bucket": "lt8",
+  "fga": 86795,
+  "fgm": 48195,
+  "usage_pct": 41.75,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2015-16&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:38Z"
+ },
+ {
+  "season": "2015-16",
+  "bucket": "8_16",
+  "fga": 28406,
+  "fgm": 11533,
+  "usage_pct": 13.664,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2015-16&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:38Z"
+ },
+ {
+  "season": "2015-16",
+  "bucket": "16_24",
+  "fga": 33599,
+  "fgm": 13381,
+  "usage_pct": 16.162,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2015-16&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:38Z"
+ },
+ {
+  "season": "2015-16",
+  "bucket": "24plus",
+  "fga": 58594,
+  "fgm": 20887,
+  "usage_pct": 28.185,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2015-16&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:38Z"
+ },
+ {
+  "season": "2015-16",
+  "bucket": "backcourt",
+  "fga": 499,
+  "fgm": 21,
+  "usage_pct": 0.24,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2015-16&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:47:38Z"
+ },
+ {
+  "season": "2016-17",
+  "bucket": "lt8",
+  "fga": 85943,
+  "fgm": 48840,
+  "usage_pct": 40.939,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2016-17&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:01Z"
+ },
+ {
+  "season": "2016-17",
+  "bucket": "8_16",
+  "fga": 27834,
+  "fgm": 11427,
+  "usage_pct": 13.259,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2016-17&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:01Z"
+ },
+ {
+  "season": "2016-17",
+  "bucket": "16_24",
+  "fga": 29910,
+  "fgm": 12046,
+  "usage_pct": 14.248,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2016-17&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:01Z"
+ },
+ {
+  "season": "2016-17",
+  "bucket": "24plus",
+  "fga": 65680,
+  "fgm": 23663,
+  "usage_pct": 31.287,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2016-17&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:01Z"
+ },
+ {
+  "season": "2016-17",
+  "bucket": "backcourt",
+  "fga": 562,
+  "fgm": 14,
+  "usage_pct": 0.268,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2016-17&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:01Z"
+ },
+ {
+  "season": "2017-18",
+  "bucket": "lt8",
+  "fga": 84911,
+  "fgm": 49109,
+  "usage_pct": 40.108,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2017-18&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:26Z"
+ },
+ {
+  "season": "2017-18",
+  "bucket": "8_16",
+  "fga": 30114,
+  "fgm": 12373,
+  "usage_pct": 14.224,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2017-18&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:26Z"
+ },
+ {
+  "season": "2017-18",
+  "bucket": "16_24",
+  "fga": 25429,
+  "fgm": 10178,
+  "usage_pct": 12.011,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2017-18&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:26Z"
+ },
+ {
+  "season": "2017-18",
+  "bucket": "24plus",
+  "fga": 70675,
+  "fgm": 25767,
+  "usage_pct": 33.383,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2017-18&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:26Z"
+ },
+ {
+  "season": "2017-18",
+  "bucket": "backcourt",
+  "fga": 578,
+  "fgm": 8,
+  "usage_pct": 0.273,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2017-18&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:26Z"
+ },
+ {
+  "season": "2018-19",
+  "bucket": "lt8",
+  "fga": 91981,
+  "fgm": 53239,
+  "usage_pct": 41.913,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2018-19&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:48Z"
+ },
+ {
+  "season": "2018-19",
+  "bucket": "8_16",
+  "fga": 28699,
+  "fgm": 11837,
+  "usage_pct": 13.077,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2018-19&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:48Z"
+ },
+ {
+  "season": "2018-19",
+  "bucket": "16_24",
+  "fga": 20144,
+  "fgm": 8079,
+  "usage_pct": 9.179,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2018-19&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:48Z"
+ },
+ {
+  "season": "2018-19",
+  "bucket": "24plus",
+  "fga": 78125,
+  "fgm": 27891,
+  "usage_pct": 35.599,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2018-19&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:48Z"
+ },
+ {
+  "season": "2018-19",
+  "bucket": "backcourt",
+  "fga": 509,
+  "fgm": 16,
+  "usage_pct": 0.232,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2018-19&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:48:48Z"
+ },
+ {
+  "season": "2019-20",
+  "bucket": "lt8",
+  "fga": 77418,
+  "fgm": 44959,
+  "usage_pct": 41.154,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2019-20&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:09Z"
+ },
+ {
+  "season": "2019-20",
+  "bucket": "8_16",
+  "fga": 24071,
+  "fgm": 9917,
+  "usage_pct": 12.796,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2019-20&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:09Z"
+ },
+ {
+  "season": "2019-20",
+  "bucket": "16_24",
+  "fga": 14456,
+  "fgm": 5839,
+  "usage_pct": 7.685,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2019-20&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:09Z"
+ },
+ {
+  "season": "2019-20",
+  "bucket": "24plus",
+  "fga": 71721,
+  "fgm": 25822,
+  "usage_pct": 38.126,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2019-20&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:09Z"
+ },
+ {
+  "season": "2019-20",
+  "bucket": "backcourt",
+  "fga": 450,
+  "fgm": 13,
+  "usage_pct": 0.239,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2019-20&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:09Z"
+ },
+ {
+  "season": "2020-21",
+  "bucket": "lt8",
+  "fga": 77256,
+  "fgm": 45051,
+  "usage_pct": 40.452,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2020-21&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:31Z"
+ },
+ {
+  "season": "2020-21",
+  "bucket": "8_16",
+  "fga": 25225,
+  "fgm": 10950,
+  "usage_pct": 13.208,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2020-21&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:31Z"
+ },
+ {
+  "season": "2020-21",
+  "bucket": "16_24",
+  "fga": 13741,
+  "fgm": 5616,
+  "usage_pct": 7.195,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2020-21&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:31Z"
+ },
+ {
+  "season": "2020-21",
+  "bucket": "24plus",
+  "fga": 74421,
+  "fgm": 27394,
+  "usage_pct": 38.967,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2020-21&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:31Z"
+ },
+ {
+  "season": "2020-21",
+  "bucket": "backcourt",
+  "fga": 340,
+  "fgm": 9,
+  "usage_pct": 0.178,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2020-21&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:31Z"
+ },
+ {
+  "season": "2021-22",
+  "bucket": "lt8",
+  "fga": 86338,
+  "fgm": 50953,
+  "usage_pct": 39.838,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2021-22&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:53Z"
+ },
+ {
+  "season": "2021-22",
+  "bucket": "8_16",
+  "fga": 28560,
+  "fgm": 12264,
+  "usage_pct": 13.178,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2021-22&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:53Z"
+ },
+ {
+  "season": "2021-22",
+  "bucket": "16_24",
+  "fga": 15469,
+  "fgm": 6177,
+  "usage_pct": 7.138,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2021-22&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:53Z"
+ },
+ {
+  "season": "2021-22",
+  "bucket": "24plus",
+  "fga": 85880,
+  "fgm": 30521,
+  "usage_pct": 39.627,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2021-22&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:53Z"
+ },
+ {
+  "season": "2021-22",
+  "bucket": "backcourt",
+  "fga": 475,
+  "fgm": 15,
+  "usage_pct": 0.219,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2021-22&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:49:53Z"
+ },
+ {
+  "season": "2022-23",
+  "bucket": "lt8",
+  "fga": 89930,
+  "fgm": 54097,
+  "usage_pct": 41.4,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2022-23&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:15Z"
+ },
+ {
+  "season": "2022-23",
+  "bucket": "8_16",
+  "fga": 29329,
+  "fgm": 13093,
+  "usage_pct": 13.502,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2022-23&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:15Z"
+ },
+ {
+  "season": "2022-23",
+  "bucket": "16_24",
+  "fga": 13925,
+  "fgm": 5766,
+  "usage_pct": 6.411,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2022-23&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:15Z"
+ },
+ {
+  "season": "2022-23",
+  "bucket": "24plus",
+  "fga": 83577,
+  "fgm": 30289,
+  "usage_pct": 38.476,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2022-23&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:15Z"
+ },
+ {
+  "season": "2022-23",
+  "bucket": "backcourt",
+  "fga": 459,
+  "fgm": 15,
+  "usage_pct": 0.211,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2022-23&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:15Z"
+ },
+ {
+  "season": "2023-24",
+  "bucket": "lt8",
+  "fga": 90533,
+  "fgm": 54099,
+  "usage_pct": 41.396,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2023-24&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:38Z"
+ },
+ {
+  "season": "2023-24",
+  "bucket": "8_16",
+  "fga": 29250,
+  "fgm": 12950,
+  "usage_pct": 13.374,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2023-24&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:38Z"
+ },
+ {
+  "season": "2023-24",
+  "bucket": "16_24",
+  "fga": 12563,
+  "fgm": 5110,
+  "usage_pct": 5.744,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2023-24&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:38Z"
+ },
+ {
+  "season": "2023-24",
+  "bucket": "24plus",
+  "fga": 85889,
+  "fgm": 31569,
+  "usage_pct": 39.273,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2023-24&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:38Z"
+ },
+ {
+  "season": "2023-24",
+  "bucket": "backcourt",
+  "fga": 465,
+  "fgm": 11,
+  "usage_pct": 0.213,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2023-24&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:50:38Z"
+ },
+ {
+  "season": "2024-25",
+  "bucket": "lt8",
+  "fga": 87944,
+  "fgm": 52350,
+  "usage_pct": 40.061,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2024-25&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:01Z"
+ },
+ {
+  "season": "2024-25",
+  "bucket": "8_16",
+  "fga": 28642,
+  "fgm": 12731,
+  "usage_pct": 13.047,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2024-25&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:01Z"
+ },
+ {
+  "season": "2024-25",
+  "bucket": "16_24",
+  "fga": 10481,
+  "fgm": 4181,
+  "usage_pct": 4.774,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2024-25&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:01Z"
+ },
+ {
+  "season": "2024-25",
+  "bucket": "24plus",
+  "fga": 91905,
+  "fgm": 33291,
+  "usage_pct": 41.865,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2024-25&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:01Z"
+ },
+ {
+  "season": "2024-25",
+  "bucket": "backcourt",
+  "fga": 555,
+  "fgm": 13,
+  "usage_pct": 0.253,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2024-25&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:01Z"
+ },
+ {
+  "season": "2025-26",
+  "bucket": "lt8",
+  "fga": 87848,
+  "fgm": 53021,
+  "usage_pct": 40.084,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2025-26&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:26Z"
+ },
+ {
+  "season": "2025-26",
+  "bucket": "8_16",
+  "fga": 29583,
+  "fgm": 13181,
+  "usage_pct": 13.498,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2025-26&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:26Z"
+ },
+ {
+  "season": "2025-26",
+  "bucket": "16_24",
+  "fga": 10755,
+  "fgm": 4310,
+  "usage_pct": 4.907,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2025-26&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:26Z"
+ },
+ {
+  "season": "2025-26",
+  "bucket": "24plus",
+  "fga": 90936,
+  "fgm": 32694,
+  "usage_pct": 41.493,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2025-26&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:26Z"
+ },
+ {
+  "season": "2025-26",
+  "bucket": "backcourt",
+  "fga": 38,
+  "fgm": 21,
+  "usage_pct": 0.017,
+  "teams": 30,
+  "source_url": "https://www.nba.com/stats/teams/shooting?DistanceRange=8ft+Range&Season=2025-26&SeasonType=Regular+Season&PerMode=Totals",
+  "pulled_at": "2026-11-07T14:51:26Z"
+ }
+]

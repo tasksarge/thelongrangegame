@@ -1,0 +1,46 @@
+name: Refresh data
+
+# Weekly during the season (October to June). Proposes a PR; never merges.
+on:
+  schedule:
+    - cron: '17 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Season gate (Oct–Jun only)
+        id: gate
+        run: |
+          m=$(date -u +%m)
+          if [ "$m" -ge 7 ] && [ "$m" -le 9 ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.skip != 'true'
+        with: { python-version: '3.11' }
+      - name: Pull from stats.nba.com
+        if: steps.gate.outputs.skip != 'true'
+        continue-on-error: true
+        id: pull
+        run: |
+          python -m pip install -q -r requirements.txt
+          make data
+      - name: Note when blocked
+        if: steps.pull.outcome == 'failure'
+        run: echo "::warning::stats.nba.com blocked or throttled the runner. Run 'make data' locally and push, or use a self-hosted runner."
+      - name: Open PR with the data diff
+        if: steps.pull.outcome == 'success'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: 'data: weekly refresh from stats.nba.com'
+          title: 'Weekly data refresh'
+          body: |
+            Automated pull of the three JSON files. validate.py passed in this run.
+            Review the diff in `data/` before merging; the epilogue stamp updates from `pulled_at`.
+          branch: data/refresh
+          add-paths: data/
+          delete-branch: true

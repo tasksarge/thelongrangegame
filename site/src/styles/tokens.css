@@ -1,0 +1,96 @@
+/* The Long Range Game, Revisited — design tokens (pass 3: retro-futurist editorial collage). See DESIGN.md. */
+:root {
+  /* palette */
+  --paper: #efe6e1;
+  --paper-2: #e4d9d3;
+  --ink: #121212;
+  --ink-2: #2a2a2a;
+  --blue: #2b3bff;
+  --blue-2: #1c27c9;
+  --olive: #23271a;
+  --olive-2: #2f3421;
+  --olive-3: #3b4129;
+  --sun: #f2de4a;
+  --sun-2: #e2cc2e;
+  --chalk: #f5f1ec;
+  --steel: #2f5d8a;
+  --mist: #c9c1bc;
+  --mist-2: #a89e98;
+
+  /* semantic: paper ground */
+  --bg: var(--paper);
+  --bg-2: var(--paper-2);
+  --surface: #f7f1ed;
+  --fg: var(--ink);
+  --fg-muted: #5f5752;
+  --rule: var(--mist);
+  --grey: var(--mist-2);
+  --grey-2: var(--mist);
+  --accent: var(--blue);
+  --accent-2: var(--sun);
+  --accent-ink: var(--paper);
+  --now: var(--sun);
+  --note: var(--blue-2);
+  --pen: var(--blue-2);
+  --hl: var(--sun);
+  --ink-soft-blue: rgba(43, 59, 255, 0.14);
+  --shadow-1: none;
+  --shadow-2: none;
+
+  /* type */
+  --font-display: "Big Shoulders Display", "Archivo Narrow", Impact, sans-serif;
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-paper: "Source Serif 4", Georgia, "Times New Roman", serif;
+
+  /* scale: 1.25 on 18px */
+  --t-0: 0.8rem;
+  --t-1: 1rem;
+  --t-2: 1.25rem;
+  --t-3: 1.5625rem;
+  --t-4: 1.953rem;
+  --t-5: 2.441rem;
+  --t-6: 3.052rem;
+  --t-7: 3.815rem;
+  --t-8: 4.768rem;
+  --t-9: 5.96rem;
+  --t-10: 7.45rem;
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --measure: 62ch;
+  --radius: 0px;
+  --frame: 1.5px;
+  --bar-h: 56px;
+
+  /* motion (Emil Kowalski's curves) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-press: 160ms;
+  --dur-ui: 220ms;
+  --dur-chapter: 260ms;
+  --dur-explain: 900ms;
+
+  color-scheme: light;
+}
+
+/* Olive ground: the arena chapters (Vox register) */
+.scene--dark,
+[data-ground="ink"] {
+  --bg: var(--olive);
+  --bg-2: var(--olive-2);
+  --surface: var(--olive-3);
+  --fg: var(--chalk);
+  --fg-muted: #b9b7a6;
+  --rule: rgba(245, 241, 236, 0.18);
+  --grey: #6d7259;
+  --grey-2: #454a35;
+  --accent: var(--sun);
+  --accent-2: var(--chalk);
+  --accent-ink: var(--olive);
+  --note: var(--sun);
+  --pen: var(--sun);
+  --hl: var(--sun);
+  --ink-soft-blue: rgba(242, 222, 74, 0.16);
+  color-scheme: dark;
+}

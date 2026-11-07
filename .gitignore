@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.wrangler/
+.DS_Store
+*.log
+site/media-src/
+# 4K source plates and raw loops (360 MB) stay local; shipped renditions live in site/public/media/v3

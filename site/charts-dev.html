@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charts dev — The Long Range Game, Revisited</title>
+    <link rel="stylesheet" href="/src/styles/tokens.css" />
+    <link rel="stylesheet" href="/src/styles/fonts.css" />
+    <link rel="stylesheet" href="/src/styles/base.css" />
+    <style>
+      body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-mono); }
+      .dev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 40px 32px; padding: 24px; }
+      .dev-cell { padding: 16px; border: 2px solid var(--fg); background: var(--bg); color: var(--fg); min-width: 0; }
+      .dev-cell h2 { margin: 0 0 8px; font: 700 12px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--fg-muted); }
+      .dev-tools { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+      .dev-tools button, .dev-tools label { font: 700 11px/1.4 var(--font-mono); text-transform: uppercase; letter-spacing: .06em; padding: 3px 8px; border: 2px solid var(--fg); background: var(--bg); color: var(--fg); cursor: pointer; }
+      .dev-tools button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+      .dev-tools input[type="range"] { width: 160px; vertical-align: middle; }
+      .dev-alt { margin: 10px 0 0; font: 400 11px/1.5 var(--font-mono); color: var(--fg-muted); }
+      .dev-head { padding: 24px 24px 0; }
+      .dev-head h1 { margin: 0; font: 700 20px/1.2 var(--font-display); }
+      .dev-head p { margin: 4px 0 0; font: 400 12px/1.5 var(--font-mono); color: var(--fg-muted); }
+    </style>
+  </head>
+  <body>
+    <div class="dev-head">
+      <h1>Charts dev page</h1>
+      <p>Every module in both modes, with its methods. Left column cream, right column dark scene (.scene--dark).</p>
+    </div>
+    <main id="dev" class="dev-grid"></main>
+    <script type="module" src="/src/charts-dev.ts"></script>
+  </body>
+</html>

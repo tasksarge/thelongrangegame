@@ -1,0 +1,137 @@
+/* Chart internals shared by every module in src/charts. Tokens only; no literal colors.
+   The chrome classes (.chart, .chart-title, .chart-sub, .chart-source, .chart-data, .chart-rows)
+   are styled by the story shell in src/styles/base.css; this file only adds what the SVG,
+   the heat strips and the chart-specific parts need.
+   Pass 3b, retro-futurist editorial: electric-blue data ink, halftone fills, yellow hand-annotated
+   callouts, thin framed panels with mono captions. Flat: no shadows, no gradients. */
+.chart {
+  --fd: var(--font-data, var(--font-mono));
+  --fm: var(--font-mono, ui-monospace, monospace);
+  --ease-reveal: var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+.chart-head { margin: 0 0 12px; }
+.chart-num {
+  display: inline-block;
+  margin-right: 0.6em;
+  padding: 1px 7px;
+  border-radius: 4px;
+  font: 700 12px/1.6 var(--fd);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  vertical-align: 0.25em;
+  color: var(--ink);
+  background: var(--sun);
+}
+.chart-note {
+  margin: 6px 0 0;
+  font: 400 13px/1.45 var(--font-paper, serif);
+  color: var(--fg-muted);
+  max-width: 70ch;
+}
+.chart-body { position: relative; }
+.chart-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart-svg text { font-family: var(--fd); font-variant-numeric: tabular-nums; }
+
+/* poster panel: thin inner frame + mono caption */
+.panel-frame { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+.panel-caption { font-family: var(--fm); font-size: 11px; fill: var(--fg-muted); letter-spacing: 0.04em; }
+
+/* axes and grid: dashed mist grid, 1.5px ink baseline, no axis lines */
+.axis text, .axis-text { font-size: 12px; font-weight: 600; fill: var(--fg-muted); }
+.axis-title { font-size: 11px; font-weight: 600; fill: var(--fg-muted); letter-spacing: 0.04em; }
+.grid line { stroke: var(--mist, var(--grey-2)); stroke-width: 1; stroke-dasharray: 2 4; }
+.baseline { stroke: var(--fg); stroke-width: 1.5; shape-rendering: crispEdges; }
+.axis-break { fill: none; stroke: var(--fg); stroke-width: 1.5; }
+
+/* series */
+.series { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.series--then { stroke: var(--steel, var(--accent-2)); }
+.series-area { stroke: none; opacity: 0.6; }
+.halftone-dot { fill: var(--accent); }
+.series-thin { fill: none; stroke: var(--grey); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; }
+.trend { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linecap: round; }
+.band { fill: var(--grey-2); }
+.band-label { font-size: 12px; font-weight: 600; fill: var(--fg-muted); }
+
+/* 2016 marker */
+.paper-line { stroke: var(--fg-muted); stroke-width: 1.5; stroke-dasharray: 4 5; stroke-linecap: round; }
+.paper-label { font-family: var(--fm); font-size: 11px; fill: var(--fg-muted); letter-spacing: 0.02em; }
+
+/* hand-annotated callouts: curved 2px ink leader with an open arrowhead, yellow box, ink text */
+.callout-leader { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.callout-box { fill: var(--sun); }
+.callout-text { font-size: 12px; font-weight: 700; fill: var(--ink); }
+
+/* story points: 8px circles with a 2.5px paper ring; labels carry a paper halo */
+.pt { fill: var(--accent); stroke: var(--bg); stroke-width: 2.5; }
+.pt--alt { fill: var(--ink); fill-opacity: 0.6; }
+.pt-label {
+  font-size: 13px; font-weight: 700; fill: var(--fg);
+  paint-order: stroke; stroke: var(--bg); stroke-width: 3px; stroke-linejoin: round;
+}
+.pt-sub { font-size: 12px; font-weight: 500; fill: var(--fg-muted); paint-order: stroke; stroke: var(--bg); stroke-width: 3px; stroke-linejoin: round; }
+.panel-title { font-size: 12px; font-weight: 700; fill: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.panel { transition: opacity var(--dur-ui, 220ms) var(--ease-reveal); }
+
+/* legend chip */
+.legend-chip text { font-size: 12px; font-weight: 600; fill: var(--fg-muted); }
+.legend-chip .legend-series { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.legend-chip .legend-thin { stroke: var(--grey); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; }
+
+/* stats chip (Figure 3): solid sun, ink text, display-font R² */
+.chip { fill: var(--sun); stroke: none; }
+.stat-box text { font-size: 12px; font-weight: 600; fill: var(--ink); }
+.stat-box .stat-key { fill: var(--ink); opacity: 0.7; }
+.stat-box .stat-big { font-family: var(--font-display, var(--fd)); font-size: 30px; font-weight: 800; letter-spacing: -0.02em; }
+
+/* footer additions */
+.chart-rows th { position: sticky; top: 0; background: var(--bg); color: var(--fg-muted); }
+.chart .chart-data { transition: transform var(--dur-press, 160ms) var(--ease-reveal); }
+.chart .chart-data:active { transform: scale(0.97); }
+.chart-stamp {
+  display: inline-block; margin: 10px 0 0; padding: 4px 12px;
+  font: 700 12px/1.5 var(--fd); letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink); background: var(--sun); border-radius: 999px;
+}
+
+/* heat strips (Figure 2): halftone dots sized by value inside faint cell outlines */
+.heat { display: grid; gap: 4px; align-items: stretch; }
+.heat-row-label, .heat-col-label {
+  font: 600 12px/1.3 var(--fd); color: var(--fg-muted); white-space: nowrap;
+}
+.heat-row-label { display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
+.heat-col-label { display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; }
+.heat-col-label--season { justify-content: flex-end; padding: 0 10px 0 0; align-items: center; }
+.heat-cell {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; min-height: 22px; padding: 0; margin: 0;
+  border: 1px solid var(--rule); border-radius: 2px; background: transparent; cursor: pointer; outline-offset: 2px;
+  transition: opacity var(--dur-press, 160ms) var(--ease-reveal);
+}
+.heat-dot { display: block; border-radius: 50%; background: var(--accent); }
+.heat-cell:hover { opacity: 0.75; }
+.heat-cell:focus-visible { outline: 2px solid var(--fg); }
+.heat-cell.is-col { border-color: var(--fg); }
+/* under 560px (container width) the cells are too small for outlines: dots only, row labels kept */
+.heat--compact .heat-cell { border-color: transparent; }
+.heat--compact .heat-cell.is-col { border-color: var(--fg); }
+.heat-strip-title { font: 700 12px/1.3 var(--fd); text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-muted); margin: 0 0 8px; }
+.heat-legend { margin-top: 10px; font: 600 12px/1.4 var(--fd); color: var(--fg-muted); }
+.heat-legend-bar { display: flex; gap: 4px; align-items: center; height: 18px; }
+.heat-legend-step { display: block; border-radius: 50%; background: var(--accent); }
+.heat-legend--original { color: var(--grey); }
+.heat-legend--original .heat-legend-step { background: var(--grey); }
+.heat-legend--original .heat-legend-note { margin-top: 3px; font-weight: 500; }
+.heat-legend-scale { display: flex; justify-content: space-between; margin-top: 4px; }
+.heat-tip {
+  position: absolute; z-index: 5; pointer-events: none;
+  padding: 8px 12px; border-radius: 4px; background: var(--ink); color: var(--chalk, var(--bg));
+  font: 600 12px/1.5 var(--fd); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.heat-tip b { font-weight: 700; display: block; margin-bottom: 2px; }
+.heat-tip .is-on { color: var(--sun); }
+.heat-then { display: grid; grid-template-columns: auto 1fr 1fr; gap: 0 16px; }
+.heat-then .heat { grid-auto-rows: minmax(22px, 1fr); }
+@media (max-width: 560px) {
+  .heat-then { gap: 0 8px; }
+}

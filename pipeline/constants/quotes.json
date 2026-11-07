@@ -1,0 +1,54 @@
+{
+  "_note": "Dated quotes for the Act 3 backlash beat (PRD section 3 and Appendix A4). Only the fragments the PRD records are stored; the page must not extend them. Publication home pages stand in for article URLs (url_is_homepage) until the exact article links are added.",
+  "entries": [
+    {
+      "id": "silver_2025_01",
+      "speaker": "Adam Silver",
+      "role": "NBA Commissioner",
+      "date": "2025-01",
+      "quote": "we will tweak it, we will correct those issues",
+      "context": "On the volume of three-point shooting, January 2025; the season set a record 37.6 attempts per game.",
+      "source": "CBS Sports",
+      "source_url": "https://www.cbssports.com/nba/",
+      "url_verified": true,
+      "url_is_homepage": true
+    },
+    {
+      "id": "james_2025_10",
+      "speaker": "LeBron James",
+      "role": "Los Angeles Lakers forward",
+      "date": "2025-10",
+      "quote": null,
+      "paraphrase": "Concedes the league has a three-point problem.",
+      "context": "October 2025, on threes and TV ratings.",
+      "source": "Front Office Sports: LeBron and Silver on threes and ratings",
+      "source_url": "https://frontofficesports.com/",
+      "url_verified": true,
+      "url_is_homepage": true
+    },
+    {
+      "id": "silver_2026_03",
+      "speaker": "Adam Silver",
+      "role": "NBA Commissioner",
+      "date": "2026-03",
+      "quote": "I'm listening to the critics",
+      "context": "Paris, March 2026.",
+      "source": "Front Office Sports: Silver in Paris",
+      "source_url": "https://frontofficesports.com/",
+      "url_verified": true,
+      "url_is_homepage": true
+    },
+    {
+      "id": "silver_2026_11",
+      "speaker": "Adam Silver",
+      "role": "NBA Commissioner",
+      "date": "2026-11",
+      "quote": "I don't think it has anything to do with the three-point shot",
+      "context": "Defending the product amid ratings questions, November 2026.",
+      "source": "Front Office Sports: Silver defends product amid ratings, Nov 2026",
+      "source_url": "https://frontofficesports.com/",
+      "url_verified": true,
+      "url_is_homepage": true
+    }
+  ]
+}

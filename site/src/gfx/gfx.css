@@ -1,0 +1,206 @@
+/* Code-drawn graphics (src/gfx): retro-futurist collage register. Colors and fonts only via tokens; see DESIGN.md. */
+
+.gfx {
+  position: relative;
+  color: var(--fg);
+  --gfx-blue: var(--blue, #2b3bff);
+  --gfx-sun: var(--sun, #f2de4a);
+  --gfx-chalk: var(--chalk, #f5f1ec);
+  --gfx-ink: var(--ink, #121212);
+  --gfx-mist: var(--mist, #c9c1bc);
+  /* Data ink: electric blue on light, yellow on the olive ground. */
+  --gfx-accent: var(--gfx-blue);
+}
+.scene--dark .gfx, [data-ground="ink"] .gfx, .gfx[data-gfx-ground="ink"] { --gfx-accent: var(--gfx-sun); }
+.gfx[data-gfx-ground="paper"] { --gfx-accent: var(--gfx-blue); }
+.gfx svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+/* ---- court: wireframe ---- */
+.gfx-court svg { overflow: hidden; }
+.gfx-court__line {
+  fill: none;
+  stroke: var(--gfx-accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: var(--sw, 0.2);
+}
+.gfx-court__hoop { fill: none; stroke: var(--gfx-accent); stroke-width: var(--sw, 0.2); }
+.gfx-court__dot { fill: var(--gfx-accent); }
+.gfx-court__zone { stroke: none; }
+.gfx-court__shot {
+  fill: none;
+  stroke: var(--gfx-accent);
+  stroke-linecap: round;
+  stroke-width: var(--sw, 0.2);
+}
+.gfx-court__ball { stroke: var(--gfx-accent); stroke-width: var(--sw, 0.2); }
+
+/* ---- scoreboard ---- */
+.gfx-scoreboard {
+  --sb-size: clamp(44px, 11vw, 96px);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px 20px;
+  align-items: end;
+  padding: 20px 24px 18px;
+  background: var(--gfx-ink);
+  color: var(--gfx-chalk);
+  box-shadow: inset 0 0 0 1.5px var(--gfx-chalk);
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.gfx-scoreboard__team { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.gfx-scoreboard__team--away { align-items: flex-end; }
+.gfx-scoreboard__label {
+  font-family: var(--font-mono, var(--font-data));
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gfx-chalk);
+  opacity: 0.7;
+}
+.gfx-scoreboard__clock { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.gfx-scoreboard__clock .gfx-scoreboard__num { font-size: calc(var(--sb-size) * 0.72); }
+.gfx-scoreboard__num { display: inline-flex; font-size: var(--sb-size); line-height: 1; height: 1em; color: var(--gfx-sun); }
+.gfx-scoreboard__slot {
+  position: relative;
+  display: inline-block;
+  width: 0.56em;
+  height: 1em;
+  overflow: hidden;
+  text-align: center;
+}
+.gfx-scoreboard__slot--colon { width: 0.28em; }
+.gfx-scoreboard__roll { display: flex; flex-direction: column; transition: transform 200ms var(--ease-out, ease); will-change: transform; }
+.gfx-scoreboard__digit { display: block; height: 1em; line-height: 1; }
+@media (prefers-reduced-motion: reduce) { .gfx-scoreboard__roll { transition: none; } }
+
+/* ---- counter ---- */
+.gfx-counter {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(56px, 14vw, 160px);
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--gfx-accent);
+}
+.gfx-counter__suffix { font-size: 0.42em; margin-left: 0.12em; color: var(--fg); font-weight: 800; }
+.gfx-counter__prefix { font-size: 0.42em; margin-right: 0.06em; color: var(--fg); font-weight: 800; }
+/* Vox-style key number: inside a yellow disc with ink text */
+.gfx-counter--disc {
+  justify-content: center;
+  align-items: center;
+  min-width: 1.9em;
+  aspect-ratio: 1;
+  padding: 0.22em 0.34em;
+  border-radius: 50%;
+  background: var(--gfx-sun);
+  color: var(--gfx-ink);
+  font-size: clamp(44px, 11vw, 120px);
+  line-height: 1;
+}
+.gfx-counter--disc .gfx-counter__suffix, .gfx-counter--disc .gfx-counter__prefix { color: var(--gfx-ink); }
+
+/* ---- arcs: wireframe shooter + hoop ---- */
+.gfx-arcs__wire { fill: none; stroke: var(--fg); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.gfx-arcs__floor { stroke: var(--fg); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 2 8; }
+.gfx-arcs__ring { fill: none; stroke: var(--gfx-accent); stroke-width: 2.5; }
+.gfx-arcs__arc { fill: none; stroke: var(--gfx-accent); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 0 7; opacity: 0.55; }
+.gfx-arcs__arc--live { opacity: 1; }
+.gfx-arcs__ball { fill: none; stroke: var(--gfx-accent); stroke-width: 2; }
+.gfx-arcs__ball-dot { fill: var(--gfx-accent); }
+
+/* ---- diet: halftone segments ---- */
+.gfx-diet { font-family: var(--font-data); color: var(--fg); }
+.gfx-diet__bar { display: block; width: 100%; height: 44px; overflow: visible; }
+.gfx-diet__dot { fill: var(--gfx-accent); }
+.gfx-diet__seg { stroke: var(--fg); stroke-width: 1.5; }
+.gfx-diet__labels { position: relative; height: 5.6em; margin-top: 10px; font-size: 13px; line-height: 1.25; }
+.gfx-diet__label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform-origin: 0 0;
+  transition: transform 600ms var(--ease-out, ease), opacity 200ms ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.gfx-diet__label[data-row="1"] { top: 2.9em; }
+.gfx-diet__label b { display: block; font-weight: 700; font-size: 17px; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) { .gfx-diet__label { transition: opacity 200ms ease; } }
+
+/* ---- confetti ---- */
+.gfx-confetti { position: absolute; inset: 0; pointer-events: none; }
+.gfx-confetti canvas { display: block; width: 100%; height: 100%; }
+
+/* ---- clock ---- */
+.gfx-clock { display: block; width: 100%; max-width: 260px; }
+.gfx-clock__track { fill: none; stroke: var(--fg); stroke-width: 1.5; opacity: 0.25; }
+.gfx-clock__ring { fill: none; stroke: var(--gfx-accent); stroke-width: 4; stroke-linecap: butt; }
+.gfx-clock__text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 72px;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  fill: var(--fg);
+}
+
+/* ---- arrows: hand-drawn ---- */
+.gfx-arrows { position: absolute; inset: 0; pointer-events: none; }
+.gfx-arrows svg { width: 100%; height: 100%; }
+.gfx-arrow { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.gfx-arrow--pass2 { stroke-width: 1.5; opacity: 0.55; }
+.gfx-arrow[data-color="chalk"] { stroke: var(--gfx-chalk); }
+.gfx-arrow[data-color="ink"] { stroke: var(--gfx-ink); }
+.gfx-arrow[data-color="blue"] { stroke: var(--gfx-blue); }
+.gfx-arrow[data-color="sun"] { stroke: var(--gfx-sun); }
+
+/* ---- wire: rotating 3D wireframe ---- */
+.gfx-wire { display: block; width: 100%; max-width: 420px; }
+.gfx-wire__line { fill: none; stroke: var(--gfx-accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+
+/* ---- highlight + circle ---- */
+.gfx-highlight-host { position: relative; z-index: 0; }
+.gfx-highlight {
+  position: absolute;
+  left: -0.2em;
+  right: -0.22em;
+  top: 0;
+  z-index: -1;
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  overflow: visible;
+}
+.gfx-highlight__mark[data-color="sun"] { fill: var(--gfx-sun); opacity: 0.9; }
+.gfx-highlight__mark[data-color="blue"] { fill: var(--gfx-blue); opacity: 0.35; }
+.gfx-circle {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: 0;
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  overflow: visible;
+}
+.gfx-circle__path { fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.gfx-circle__path[data-color="sun"] { stroke: var(--gfx-sun); }
+.gfx-circle__path[data-color="blue"] { stroke: var(--gfx-blue); }
+.gfx-circle__path[data-color="chalk"] { stroke: var(--gfx-chalk); }
+.gfx-circle__path[data-color="ink"] { stroke: var(--gfx-ink); }
+
+/* ---- dots: halftone field + checker strip ---- */
+.gfx-dots { position: absolute; inset: 0; pointer-events: none; }
+.gfx-dots svg { width: 100%; height: 100%; }
+.gfx-dots__dot { fill: currentColor; }
+.gfx-checker { display: block; width: 100%; }
+.gfx-checker__cell { fill: var(--gfx-blue); }

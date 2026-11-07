@@ -1,0 +1,23 @@
+{
+  "_note": "Timeline the story draws on (PRD Appendix A4). Seasons are named by the year they end on the page; stored here as NBA season labels. Numbers that the pipeline also produces (attempt rates, Curry's 402) are duplicated here only as narrative anchors; the data files are authoritative.",
+  "entries": [
+    {"date": "1979-80", "event": "Three-point line introduced, 23 ft 9 in (22 ft corners)", "source": "Wikipedia: Three-point field goal", "source_url": "https://en.wikipedia.org/wiki/Three-point_field_goal", "url_verified": true},
+    {"date": "1994-95 to 1996-97", "event": "Line shortened to 22 ft all around", "source": "Wikipedia: Three-point field goal", "source_url": "https://en.wikipedia.org/wiki/Three-point_field_goal", "url_verified": true},
+    {"date": "1997-98", "event": "Line restored; the paper's data begins", "source": "Wikipedia: Three-point field goal", "source_url": "https://en.wikipedia.org/wiki/Three-point_field_goal", "url_verified": true},
+    {"date": "2007-08", "event": "Rockets' attempt rate jumps; league passes 22% of shots", "source": "Wikipedia: Three-point revolution; pipeline data/league.json", "source_url": "https://en.wikipedia.org/wiki/Three-point_revolution", "url_verified": true},
+    {"date": "2009-10", "event": "Curry's rookie season", "source": "Basketball-Reference: Stephen Curry", "source_url": "https://www.basketball-reference.com/players/c/curryst01.html", "url_verified": true},
+    {"date": "2015-16", "event": "73-9, 402 threes, unanimous MVP", "source": "Wikipedia: 2015-16 Golden State Warriors season", "source_url": "https://en.wikipedia.org/wiki/2015%E2%80%9316_Golden_State_Warriors_season", "url_verified": true},
+    {"date": "2016-06-19", "event": "Game 7, Cavaliers 93-89", "source": "Basketball-Reference box score", "source_url": "https://www.basketball-reference.com/boxscores/201606190GSW.html", "url_verified": true},
+    {"date": "2016-06-20", "event": "Paper dated and submitted", "source": "The Long Range Game: A Study of the Three Pointer (Appendix B transcription)", "source_url": "https://github.com/", "url_verified": false, "url_is_homepage": true, "note": "Internal source: the paper itself. Replace with the repo URL once public."},
+    {"date": "2017, 2018", "event": "Warriors titles", "source": "Wikipedia: Three-point revolution", "source_url": "https://en.wikipedia.org/wiki/Three-point_revolution", "url_verified": true},
+    {"date": "2021-12-14", "event": "Curry passes Ray Allen with his 2,974th three at Madison Square Garden", "source": "NBA.com Warriors: Curry three-point facts (Appendix C)", "source_url": "https://www.nba.com/warriors/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2022-06", "event": "Warriors title; Curry Finals MVP", "source": "Basketball-Reference: Stephen Curry", "source_url": "https://www.basketball-reference.com/players/c/curryst01.html", "url_verified": true},
+    {"date": "2024-08", "event": "Olympic gold, Paris", "source": "Basketball-Reference: Stephen Curry", "source_url": "https://www.basketball-reference.com/players/c/curryst01.html", "url_verified": true},
+    {"date": "2024-25", "event": "Record 37.6 attempts per game; Celtics 48.2", "source": "Vertize Sports: NBA three-point attempts per game by season (Appendix C)", "source_url": "https://vertizesports.com/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2025-01", "event": "Silver: \"we will tweak it, we will correct those issues\"", "source": "CBS Sports", "source_url": "https://www.cbssports.com/nba/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2025-10", "event": "LeBron James concedes a three-point problem", "source": "Front Office Sports", "source_url": "https://frontofficesports.com/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2026-03", "event": "Silver in Paris: \"I'm listening to the critics\"", "source": "Front Office Sports", "source_url": "https://frontofficesports.com/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2025-26", "event": "37.0 attempts per game; second year-over-year decline", "source": "Vertize Sports (Appendix C); pipeline data/league.json", "source_url": "https://vertizesports.com/", "url_verified": true, "url_is_homepage": true},
+    {"date": "2026-06-13", "event": "Knicks beat Spurs for the title; eighth different champion in eight years", "source": "Wikipedia: 2026 NBA Finals", "source_url": "https://en.wikipedia.org/wiki/2026_NBA_Finals", "url_verified": true}
+  ]
+}
