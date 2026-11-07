@@ -28,6 +28,10 @@ panels.forEach((p) => app.appendChild(p));
 /* a plate that has not been produced yet must not show a broken-image box */
 document.addEventListener('error', (e) => { const t = e.target as HTMLElement; if (t instanceof HTMLImageElement) t.style.visibility = 'hidden'; }, true);
 
+/* cover, animated variant: the torus behind the hand turns once every 24 s */
+const torusHost = cover.querySelector<HTMLElement>('#cover-torus');
+const coverTorus = torusHost ? gfx.createWire(torusHost, { shape: 'torus', tilt: 0.3, period: 24000, cull: true, rings: 44, meridians: 10 }) : null;
+
 /* highlighter sweeps turn on when their chapter shows */
 const armHighlights = (root: HTMLElement) => root.querySelectorAll<HTMLElement>('.hl').forEach((el, i) => setTimeout(() => el.classList.add('is-on'), 120 + i * 140));
 
@@ -180,7 +184,7 @@ const mountEpilogue = () => {
 
 /* ---------- the engine ---------- */
 const defs: ChapterDef[] = [
-  { id: 'cover', label: 'Cover', beats: 1, onEnter: () => armHighlights(cover) },
+  { id: 'cover', label: 'Cover', beats: 1, onEnter: () => { armHighlights(cover); coverTorus?.play(); }, onLeave: () => coverTorus?.pause() },
   { id: 'game7', label: 'Game 7', beats: 3, dark: true, onEnter: () => { g7.court.play(); if (!g7.arrows) g7.arrows = gfx.createArrows(game7.querySelector('#g7-arrows')!, [{ x: 0.52, y: 0.08 }, { x: 0.97, y: 0.22 }, { x: 0.98, y: 0.95 }, { x: 0.5, y: 0.97 }], { targetEl: g7.court.hoopEl(), color: 'chalk' }); g7.arrows.play(); }, onBeat: g7Beat },
   { id: 'paper', label: 'The paper', beats: 1, scrolls: true, onEnter: () => { mountPaperFigures(); armHighlights(paper); } },
   { id: 'night', label: 'The night before', beats: act2.beats.length, dark: true, onBeat: nightBeat, onLeave: () => { nightLive?.destroy(); nightLive = null; } },

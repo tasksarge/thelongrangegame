@@ -12,6 +12,27 @@ export const loop = (name: string, cls = '') =>
 const sparkle = (x: string, y: string, size = 18) => `<span class="sparkle" style="left:${x};top:${y};width:${size}px;height:${size}px" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0c.6 7 5 11.4 12 12-7 .6-11.4 5-12 12-.6-7-5-11.4-12-12 7-.6 11.4-5 12-12z" fill="currentColor"/></svg></span>`;
 const hl = (text: string) => `<span class="hl" data-hl><span>${esc(text)}</span></span>`;
 
+/** Cover art variant. 'animated' (default) layers a live rotating torus, a full-colour ball and
+ *  twinkling stars; '?cover=classic' restores the original flat plate. */
+export const coverVariant = (): 'animated' | 'classic' =>
+  new URLSearchParams(location.search).get('cover') === 'classic' ? 'classic' : 'animated';
+
+const star = (cls: string, x: number, y: number, w: number, hollow = false) =>
+  `<span class="cover-live__star ${cls}" style="left:${x}%;top:${y}%;width:${w}%" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0c.6 7 5 11.4 12 12-7 .6-11.4 5-12 12-.6-7-5-11.4-12-12 7-.6 11.4-5 12-12z" ${hollow ? 'fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"' : 'fill="currentColor"'}/></svg></span>`;
+
+function coverLive(): string {
+  const src = (n: string) => `src="/media/v3/cover-alt/${n}-1600.webp" srcset="/media/v3/cover-alt/${n}-800.webp 800w, /media/v3/cover-alt/${n}-1600.webp 1600w" sizes="(min-width: 900px) 40vw, 90vw"`;
+  return `<figure class="cover__art cover__art--live">
+    <div class="cover-live">
+      <img class="cover-live__bg" ${src('bg')} alt="" fetchpriority="high" decoding="async">
+      <div class="cover-live__torus" id="cover-torus" aria-hidden="true"></div>
+      <img class="cover-live__fg" ${src('fg')} alt="Halftone cutout of a hand palming a full-colour basketball, a blue wireframe torus turning behind it" decoding="async">
+      ${star('s1', 14.4, 43.5, 6)}${star('s2', 86.2, 37.7, 5.6, true)}${star('s3', 85, 82.6, 3.8)}
+      ${star('s4 cover-live__star--blue', 1, 9, 2.6)}${star('s5 cover-live__star--blue', 96.5, 62, 2)}
+    </div>
+  </figure>`;
+}
+
 /* 0 — cover */
 export function buildCover(): HTMLElement {
   return h(`
@@ -24,10 +45,10 @@ export function buildCover(): HTMLElement {
         <div class="cover__meta"><span>Sahil Shah</span><span>NBA.com shot-location data, 1996-97 to 2025-26</span><span>7 chapters, about 6 minutes</span></div>
         <p class="cover__hint" data-no-advance><img class="cutout cutout--hand" src="/media/v3/elements/hand-pointing-right.webp" alt="" width="120" height="120" decoding="async"> Tap anywhere, swipe, or press the arrow keys</p>
       </div>
-      <figure class="cover__art">
+      ${coverVariant() === 'classic' ? `<figure class="cover__art">
         ${plate('portrait-cover', 'Halftone cutout of a hand palming a basketball with a blue wireframe torus behind it', '', '(min-width: 900px) 40vw, 90vw', true)}
         ${sparkle('-6px', '8%')}${sparkle('96%', '62%', 14)}
-      </figure>
+      </figure>` : coverLive()}
     </div>
     <div class="checker" aria-hidden="true"></div>
   </section>`);

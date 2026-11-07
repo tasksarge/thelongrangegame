@@ -256,3 +256,26 @@ dialog.evidence .close { float: right; margin: 0 0 0.75rem 1rem; }
 .data-notes summary { cursor: pointer; font-family: var(--font-ui); font-weight: 700; color: var(--accent); }
 .data-notes ul { padding-left: 1.2em; font-family: var(--font-ui); font-size: var(--t-1); line-height: 1.5; }
 .footer { margin-top: 2.5rem; padding-block: 1.5rem 3rem; border-top: 1px solid var(--rule); font-family: var(--font-mono); font-size: 12px; color: var(--fg-muted); display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; justify-content: space-between; }
+
+/* ---------- cover, animated variant (?cover=classic restores the flat plate) ---------- */
+.cover__art--live { container-type: size; }
+.cover-live { position: relative; width: min(100cqw, 80cqh); aspect-ratio: 4 / 5; overflow: hidden; }
+.cover-live > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cover-live__fg { z-index: 2; }
+.cover-live__torus { position: absolute; left: 50%; top: var(--torus-y, 60%); width: var(--torus-w, 140%); aspect-ratio: 1; transform: translate(-50%, -50%); z-index: 1; pointer-events: none; }
+.cover-live__torus .gfx-wire { max-width: none; width: 100%; }
+.cover-live__torus .gfx-wire__line { stroke: var(--blue); stroke-width: 1.4px; vector-effect: non-scaling-stroke; }
+.cover-live__star { position: absolute; z-index: 3; aspect-ratio: 1; transform: translate(-50%, -50%); color: var(--ink); pointer-events: none; }
+.cover-live__star svg { width: 100%; height: 100%; display: block; transform-origin: 50% 50%; animation: twinkle 3.2s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+.cover-live__star--blue { color: var(--blue); }
+.cover-live__star.s2 svg { animation-duration: 4.1s; animation-delay: -1.3s; }
+.cover-live__star.s3 svg { animation-duration: 2.7s; animation-delay: -0.6s; }
+.cover-live__star.s4 svg { animation-duration: 3.6s; animation-delay: -2.2s; }
+.cover-live__star.s5 svg { animation-duration: 2.9s; animation-delay: -1.7s; }
+@keyframes twinkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  42% { transform: scale(0.5) rotate(25deg); opacity: 0.3; }
+  58% { transform: scale(1.15) rotate(-8deg); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .cover-live__star svg { animation: none; } }
+@media not all and (min-width: 900px) and (min-aspect-ratio: 4/5) { .cover__art--live { justify-content: center; } }
